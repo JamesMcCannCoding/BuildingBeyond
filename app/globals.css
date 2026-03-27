@@ -1,0 +1,1085 @@
+:root {
+  --bg: #f9f4f4;
+  --text: #1C1C1C;
+  --muted: #1C1C1C;
+  --lime: #C6EA2F;
+  --lime-dark: #C6EA2F;
+  --soft-grey: #e6e6e6;
+  --mid-grey: #d7d7d7;
+  --border-grey: #a8a8a8;
+
+  --font-body: "Avenir", "Avenir Next", "Avenir 2", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Avenir Next", "Avenir", "Avenir 2", "Helvetica Neue", Arial, sans-serif;
+  --font-script: "Avenir", "Avenir Next", "Avenir 2", "Segoe Print", "Bradley Hand", cursive;
+}
+
+html, body {
+  scroll-snap-type: y mandatory;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.shell {
+  width: min(920px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.bbHome {
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.bbHome > section {
+  scroll-snap-align: start;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(16px, 3vw, 40px);
+  min-height: 100svh;
+  scroll-snap-align: start;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.heroInner {
+  width: 100%;
+  height: calc(100vh - clamp(32px, 6vw, 80px));
+  background: var(--muted);
+  border-radius: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(32px, 5vw, 64px);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.18),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  color: white;
+}
+
+.heroInner .heroText {
+  color: var(--bg);
+}
+
+.topLogo {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 90px;
+}
+
+.logoImage {
+  width: auto;
+  height: clamp(70px, 10vw, 115px);
+  object-fit: contain;
+}
+
+.heroGraphicWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.heroGraphic {
+  width: min(100%, 520px);
+  height: auto;
+  object-fit: contain;
+}
+
+.heroText {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.heroButtons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 90px;
+  margin-bottom: 110px;
+}
+
+.actionButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 290px;
+  min-height: 66px;
+  padding: 0 28px;
+  background: var(--lime);
+  color: #121212;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  transition: transform 0.25s ease, background 0.25s ease;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  background: var(--lime-dark);
+}
+
+.actionButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--lime);
+  border-radius: 4px;
+  clip-path: polygon(0 6%, 100% 0, 98% 94%, 0 100%);
+  z-index: -1;
+}
+
+.accentDivider {
+  width: 320px;
+  height: 4px;
+  background: var(--lime);
+  border-radius: 999px;
+}
+/* =========================================================
+   CAROUSEL
+   Cinematic fullscreen carousel system
+========================================================= */
+/* ---------- Scroll Snap Section Lock ---------- */
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carouselTrack {
+  height: 100%;
+}
+
+.carouselSlide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* FULLSCREEN CAROUSEL SECTION */
+.carouselSection {
+  width: 100%;
+  height: 100vh;           
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+/* wrapper must also fill space */
+.carouselFullscreen {
+  width: 100%;
+  height: 100%;
+}
+/* ---------- Fullscreen Layout ---------- */
+.carouselFullscreen {
+  width: 100%;
+  height: 100%;
+  perspective: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselWidget {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselStage {
+  width: 100%;
+  height: 65vh;
+  max-height: 800px;
+  position: relative;
+  display: block;     
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+/* =========================================================
+   SLIDES
+========================================================= */
+.carouselSlide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 34px;
+  background: #efefef;
+  backface-visibility: hidden;
+  transform-origin: center center;
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 900ms ease,
+    filter 900ms ease,
+    box-shadow 900ms ease;
+  will-change: transform, opacity, filter;
+}
+/* image layer for parallax */
+.carouselImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.08);
+  transition: transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* ---------- Controls Row (arrows + dots) ---------- */
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 180px;
+  position: relative;
+  z-index: 20;
+}
+/* ---------- CENTER (Hero) ---------- */
+.carouselSlide.isCenter {
+  width: 75vw;
+  max-width: 1200px;
+  height: 65vh;
+  max-height: 800px;
+  transform: translate3d(-50%, -50%, 120px) scale(1);
+  opacity: 1;
+  z-index: 5;
+  border: 1.5px solid var(--border-grey);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  filter: blur(0);
+}
+
+.carouselSlide.isCenter .carouselImage {
+  transform: scale(1.02);
+}
+/* ---------- SIDE SLIDES ---------- */
+.carouselSlide.isLeft {
+  width: 75vw;
+  max-width: 1200px;
+  height: 65vh;
+  max-height: 800px;
+  transform: translate(calc(-50% - 42vw), -50%) scale(0.85) translateZ(0);
+  opacity: 0.45;
+  z-index: 3;
+  filter: blur(0.4px);
+}
+
+.carouselSlide.isRight {
+  width: 75vw;
+  max-width: 1200px;
+  height: 65vh;
+  max-height: 800px;
+  transform: translate(calc(-50% + 42vw), -50%) scale(0.85) translateZ(0);
+  opacity: 0.45;
+  z-index: 3;
+  filter: blur(0.4px);
+}
+/* ---------- FAR SLIDES (Crossfade Out) ---------- */
+.carouselSlide.isFarLeft,
+.carouselSlide.isFarRight {
+  width: 75vw;
+  max-width: 1200px;
+  height: 65vh;
+  max-height: 800px;
+  opacity: 0;
+  z-index: 1;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.carouselSlide.isFarLeft {
+  transform: translate(calc(-50% - 65vw), -50%) scale(0.75) translateZ(-120px);
+}
+
+.carouselSlide.isFarRight {
+  transform: translate(calc(-50% + 65vw), -50%) scale(0.75) translateZ(-120px);
+}
+/* ---------- Hidden ---------- */
+.carouselSlide.isHidden {
+  transform:
+    translate(-50%, -50%)
+    scale(0.75)
+    translateZ(-200px);
+  opacity: 0;
+  pointer-events: none;
+}
+/* =========================================================
+   ARROWS
+========================================================= */
+.carouselArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  border: 1.5px solid var(--border-grey, #ddd);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(6px);
+
+  cursor: pointer;
+  transition: all 220ms ease;
+}
+
+.carouselArrow:hover {
+  background: #fff;
+  transform: scale(1.08);
+}
+
+.carouselArrow:active {
+  transform: scale(0.95);
+}
+
+.carouselArrowIcon {
+  width: 18px;
+  height: 18px;
+  color: #333;
+}
+
+.carouselArrowLeft,
+.carouselArrowRight {
+  position: relative;
+}
+/* =========================================================
+   DOTS
+========================================================= */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: #8f8f8f;
+  cursor: pointer;
+
+  transition: all 240ms ease;
+  opacity: 0.7;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.dot.active {
+  width: 28px;
+  background: #5b5b5b;
+  opacity: 1;
+}
+/* =========================================================
+   MOBILE SWIPE OPTIMISATION
+========================================================= */
+.carouselStage {
+  flex: 1;
+  min-height: 340px;
+}
+/* =========================================================
+  AUTO-ADVANCE VISIBILITY HOOK
+========================================================= */
+.carouselSection.isActive .carouselSlide.isCenter .carouselImage {
+  animation: slowZoom 8s ease-in-out infinite alternate;
+}
+
+.missionContent {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.characterWrap {
+  position: absolute;
+  top: -150px;
+  right: 0;
+  width: clamp(300px, 35vw, 500px);
+  margin-right: calc((100vw - 100%) / -2);
+  pointer-events: none;
+  z-index: 1;
+}
+.missionHeaderContainer {
+  position: relative;
+  width: 100%;
+}
+
+.missionCharacter {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.steppedList {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0;
+}
+.solutionTopGraphic {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.solutionSection {
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 1100px) {
+  .characterWrap {
+    width: 350px;
+    right: -20px;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .missionContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .characterWrap {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 20px auto 0;
+    width: 280px;
+    opacity: 1;
+  }
+
+  .steppedList {
+    margin: 0 auto;
+  }
+
+  .solutionExtraImage {
+    width: 60%; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px; 
+  }
+
+  .solutionSection .sectionGraphic {
+    width: 80%;
+    max-width: 280px;
+  }
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1.02); }
+  to   { transform: scale(1.12); }
+}
+/* =========================================================
+   PERFORMANCE SAFETY
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .carouselSlide,
+  .carouselImage {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* MISSION / SOLUTION LIST SECTIONS */
+section {
+  scroll-margin-top: 0;
+}
+
+.listSection {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  padding: 120px 0; 
+  margin-top: 0;
+  width: 100%;
+}
+
+.solutionSection {
+  margin-top: 10vh; 
+  padding-bottom: 150px;
+}
+
+.sectionGraphicWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 78px;
+}
+
+.sectionGraphic {
+  width: min(100%, 380px);
+  height: auto;
+  object-fit: contain;
+}
+
+.steppedList {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.steppedItem {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.steppedItem1 {
+  margin-left: 0;
+}
+
+.steppedItem2 {
+  margin-left: 54px;
+}
+
+.steppedItem3 {
+  margin-left: 108px;
+}
+
+.steppedNumber {
+  color: var(--lime);
+  font-family: var(--font-heading);
+  font-size: 4.2rem;
+  line-height: 0.85;
+  font-weight: 900;
+  text-align: right;
+}
+
+.steppedText {
+  margin: 0;
+  max-width: 500px;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+/* FOOT ACCENT */
+.bottomAccentBar {
+  width: 100%;
+  height: 96px;
+  background: var(--lime);
+}
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+  will-change: opacity, transform;
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* --- Custom Reveal for the Painter --- */
+.reveal.revealRight {
+  transform: translateX(80px);
+}
+
+.revealVisible.revealRight {
+  transform: translateX(0);
+}
+/* SIGNUP PANEL */
+.signupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 8, 0.76);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+  z-index: 1200;
+}
+
+.signupOverlay.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.signupPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(1080px, calc(100% - 48px));
+  max-height: 92vh;
+  background: var(--bg);
+  border-radius: 26px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -46%) scale(0.98);
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+  z-index: 1300;
+}
+
+.signupPanel.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.signupClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--text);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.signupShell {
+  width: 100%;
+  padding: 42px clamp(22px, 4vw, 56px) 32px;
+}
+
+.signupProgress {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.signupPercent {
+  margin: 0 0 10px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 2.2vw, 2.3rem);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.signupBar {
+  width: 100%;
+  height: 14px;
+  background: #aca7a7;
+  overflow: hidden;
+}
+
+.signupBarFill {
+  display: block;
+  width: 22%;
+  height: 100%;
+  background: var(--lime);
+}
+
+.signupTitle {
+  margin: 0;
+  max-width: 520px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.signupForm {
+  margin-top: 30px;
+}
+
+.signupGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 22px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.signupField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.signupFieldFull {
+  grid-column: 1 / -1;
+}
+
+.signupField label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.signupField input {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  border-radius: 0;
+  background: #aca7a7;
+  color: var(--text);
+  font-size: 0.98rem;
+  padding: 0 12px;
+  transition: outline 0.2s ease, transform 0.2s ease;
+}
+
+.signupField input:focus {
+  outline: 3px solid var(--lime);
+  transform: translateY(-1px);
+}
+
+.signupActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.signupSubmit {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 48px;
+  padding: 0 28px;
+  border: 0;
+  cursor: pointer;
+  background: var(--lime);
+  color: #121212;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  transition: transform 0.25s ease, background 0.25s ease;
+  clip-path: polygon(2% 10%, 100% 4%, 99% 95%, 0 100%, 0 15%);
+}
+
+.signupMessage {
+  margin: 16px auto 0;
+  max-width: 640px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.signupMessage {
+  margin: 20px auto 0;
+  max-width: 720px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.signupMessage.success {
+  color: #1f5f22;
+}
+
+.signupMessage.error {
+  color: #8b1e1e;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    justify-content: flex-start;
+    padding-top: 16px;
+    align-items: center;
+    padding-bottom: 24px;
+    min-height: 100svh;
+  }
+
+  .heroInner{
+    padding: 100px 20px 32px;
+    min-height: auto;
+  }
+  
+  .topLogo {
+    margin-bottom: 1px;
+  }
+
+  .heroButtons {
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+
+  .actionButton {
+    min-width: 100%;
+  }
+
+  .accentDivider {
+    width: 220px;
+  }
+
+  .carouselWidget {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 10px;
+  }
+
+  .carouselControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 42px;
+    position: relative;
+    z-index: 20;
+  }
+
+  .carouselStage {
+    max-width: 100%;
+    height: 100%; 
+  }
+
+  .carouselSlide.isCenter {
+    width: 85vw;
+    height: 55vh;
+  }
+
+  .carouselSlide.isLeft {
+    width: 85vw;
+    height: 55vh;
+    transform: translate(calc(-50% - 65vw), -50%) scale(0.9);
+  }
+
+  .carouselSlide.isRight {
+    width: 85vw;
+    height: 55vh;
+    transform: translate(calc(-50% + 65vw), -50%) scale(0.9);
+  }
+
+  .carouselSlide.isFarLeft {
+    width: 85vw;
+    height: 55vh;
+    transform: translate(calc(-50% - 90vw), -50%) scale(0.8);
+  }
+
+  .carouselSlide.isFarRight {
+    width: 85vw;
+    height: 55vh;
+    transform: translate(calc(-50% + 90vw), -50%) scale(0.8);
+  }
+
+  .carouselArrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carouselArrowIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sectionGraphicWrap {
+    margin-bottom: 5px;
+  }
+
+  .steppedItem {
+    grid-template-columns: 60px 1fr;
+    gap: 18px;
+    margin-left: 0;
+  }
+
+  .steppedItem1,
+  .steppedItem2,
+  .steppedItem3 {
+    margin-left: 0;
+  }
+
+  .steppedNumber {
+    font-size: 3.2rem;
+  }
+
+  .steppedText {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .steppedList {
+    width: 100%;
+    margin: 0 auto;
+    gap: 32px;
+  }
+
+  .steppedItem1, .steppedItem2, .steppedItem3 {
+    margin-left: 0;
+    grid-template-columns: 60px 1fr;
+  }
+
+  .signupOverlay {
+    background: rgba(8, 8, 8, 0.84);
+  }
+
+  .signupPanel {
+    width: calc(100% - 12px);
+    max-height: 96vh;
+    border-radius: 14px;
+    transform: translate(-50%, -46%) scale(0.99);
+  }
+
+  .signupPanel.isOpen {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .signupShell {
+    padding: 34px 18px 20px;
+  }
+
+  .signupClose {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+
+  .signupProgress {
+    margin-bottom: 16px;
+  }
+
+  .signupPercent {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .signupBar {
+    height: 10px;
+  }
+
+  .signupTitle {
+    max-width: 280px;
+    font-size: clamp(1.2rem, 6.2vw, 2rem);
+    line-height: 0.95;
+  }
+
+  .signupForm {
+    margin-top: 18px;
+  }
+
+  .signupGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .signupFieldFull {
+    grid-column: auto;
+  }
+
+  .signupField {
+    gap: 6px;
+  }
+
+  .signupField label {
+    font-size: 0.78rem;
+  }
+
+  .signupField input {
+    height: 32px;
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .signupActions {
+    margin-top: 24px;
+  }
+
+  .signupSubmit {
+    width: 160px;
+    min-width: 160px;
+    min-height: 38px;
+    font-size: 0.9rem;
+  }
+
+  .missionHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .characterWrap {
+    position: relative;
+    top: 0;
+    right: 0;
+    order: 2; 
+    width: 100%; 
+    max-width: 320px;
+    margin-top: 0px;
+    margin-left: auto; 
+    margin-right: calc((100vw - 100%) / -2) !important; 
+    transform: translateX(0); 
+  }
+
+  .missionCharacter {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-position: right bottom;
+  }
+
+  .listSection {
+    min-height: auto; 
+    padding: 30px 0;
+  }
+}
