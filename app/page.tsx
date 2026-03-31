@@ -130,7 +130,7 @@ export default function Home() {
           <Reveal delay={400} className="revealRight">
             <div className="characterWrap">
               <Image 
-                src="/Asset15.svg" 
+                src="/Asset17.svg" 
                 alt="Painter character"
                 width={400}
                 height={400}
@@ -158,7 +158,7 @@ export default function Home() {
       <div className="solutionTopGraphic">
         <Reveal>
           <Image
-            src="/LevelLady.svg"
+            src="/Asset18.svg"
             alt="Solution decoration"
             width={400}
             height={200}
