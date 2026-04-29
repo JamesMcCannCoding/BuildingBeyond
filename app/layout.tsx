@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         {children}
 
-        <Script id="mailchimp-site-connection" strategy="afterInteractive">
+        <Script id="mcjs" strategy="afterInteractive">
           {`
             !function(c,h,i,m,p){
               m=c.createElement(h),
@@ -30,11 +30,7 @@ export default function RootLayout({
               m.async=1,
               m.src=i,
               p.parentNode.insertBefore(m,p)
-            }(
-              document,
-              "script",
-              "https://chimpstatic.com/mcjs-connected/js/users/0f3bdc042292e4cb14add00a5/6dd4a0cf1015313748cf7f1c0.js"
-            );
+            }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/YOUR-CODE-HERE.js");
           `}
         </Script>
       </body>
