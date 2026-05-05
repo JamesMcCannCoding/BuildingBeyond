@@ -73,18 +73,233 @@ img {
 
 .heroInner {
   width: 100%;
-  height: calc(100vh - clamp(32px, 6vw, 80px));
-  background: var(--muted);
+  min-height: calc(100svh - clamp(32px, 5vw, 56px));
+  background: #1c1c1c;
   border-radius: 34px;
+  padding: clamp(24px, 3vw, 40px);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  color: white;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.heroTopBar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 24px;
+  margin-bottom: clamp(34px, 7vh, 88px);
+}
+.heroTopBarRight {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* MOBILE MENU */
+
+.heroMobileMenu {
+  display: none;
+}
+
+.heroHamburger {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+  position: relative;
+  z-index: 2300;
+}
+
+.heroHamburger:hover {
+  transform: translateY(-1px) scale(1.03);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.heroHamburgerLine {
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffffff;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.heroHamburger.isOpen .heroHamburgerLine:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.heroHamburger.isOpen .heroHamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.heroHamburger.isOpen .heroHamburgerLine:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.heroMobileOverlay {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(5, 5, 5, 0.52);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  z-index: 2200;
+  border-radius: 34px;
+}
+
+.heroMobileOverlay.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.heroMobilePanel {
+  position: absolute;
+  top: 76px;
+  right: 0;
+  width: min(320px, calc(100vw - 56px));
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(20, 20, 20, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.26);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px) scale(0.96);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  z-index: 2400;
+}
+
+.heroMobilePanel.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.heroMobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heroMobileNavLink {
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(8px);
+  opacity: 0;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    background 0.22s ease,
+    color 0.22s ease;
+}
+
+.heroMobilePanel.isOpen .heroMobileNavLink {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroMobileNavLink:hover {
+  background: rgba(198, 234, 47, 0.12);
+  color: #ffffff;
+}
+
+.heroLogoWrap {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: clamp(32px, 5vw, 64px);
-  box-shadow:
-    0 40px 80px rgba(0,0,0,0.18),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
-  color: white;
+  margin: 0;
+}
+.heroMain {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.heroNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(18px, 2vw, 42px);
+  align-items: center;
+}
+
+.heroNavLeft {
+  justify-self: start;
+  justify-content: flex-start;
+}
+
+.heroNavRight {
+  justify-self: end;
+  justify-content: flex-end;
+}
+
+.heroNavLink {
+  position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.1;
+  padding-bottom: 8px;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.heroNavLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.heroNavLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s ease;
+}
+
+.heroNavLink:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.heroNavLink:hover::after,
+.heroNavLink:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .heroInner .heroText {
@@ -175,43 +390,20 @@ img {
 }
 /* =========================================================
    CAROUSEL
-   Cinematic fullscreen carousel system
 ========================================================= */
-/* ---------- Scroll Snap Section Lock ---------- */
-.carousel {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
 
-.carouselTrack {
-  height: 100%;
-}
-
-.carouselSlide {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-/* FULLSCREEN CAROUSEL SECTION */
 .carouselSection {
   width: 100%;
-  height: 100vh;           
   min-height: 100vh;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
-/* wrapper must also fill space */
-.carouselFullscreen {
-  width: 100%;
-  height: 100%;
-}
-/* ---------- Fullscreen Layout ---------- */
+
 .carouselFullscreen {
   width: 100%;
   height: 100%;
@@ -223,36 +415,40 @@ img {
 
 .carouselWidget {
   width: 100%;
-  max-width: 100%;
-  height: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
+  padding: 32px 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .carouselContent {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 28px;
 }
 
 .carouselStage {
   width: 100%;
-  height: 65vh;
-  max-height: 800px;
   position: relative;
-  display: block;     
+  height: clamp(320px, 58vh, 760px);
+  max-height: 760px;
+  min-height: 320px;
   transform-style: preserve-3d;
   will-change: transform;
+  touch-action: pan-y;
+  user-select: none;
 }
+
 /* =========================================================
    SLIDES
 ========================================================= */
+
 .carouselSlide {
   position: absolute;
   top: 50%;
@@ -269,7 +465,7 @@ img {
     box-shadow 900ms ease;
   will-change: transform, opacity, filter;
 }
-/* image layer for parallax */
+
 .carouselImage {
   object-fit: cover;
   width: 100%;
@@ -277,62 +473,43 @@ img {
   transform: scale(1.08);
   transition: transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* ---------- Controls Row (arrows + dots) ---------- */
-.carouselControls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 180px;
-  position: relative;
-  z-index: 20;
-}
-/* ---------- CENTER (Hero) ---------- */
+
 .carouselSlide.isCenter {
-  width: 75vw;
-  max-width: 1200px;
-  height: 65vh;
-  max-height: 800px;
+  width: min(75vw, 1100px);
+  height: clamp(320px, 58vh, 760px);
   transform: translate3d(-50%, -50%, 120px) scale(1);
   opacity: 1;
   z-index: 5;
   border: 1.5px solid var(--border-grey);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
   filter: blur(0);
 }
 
 .carouselSlide.isCenter .carouselImage {
   transform: scale(1.02);
 }
-/* ---------- SIDE SLIDES ---------- */
-.carouselSlide.isLeft {
-  width: 75vw;
-  max-width: 1200px;
-  height: 65vh;
-  max-height: 800px;
-  transform: translate(calc(-50% - 42vw), -50%) scale(0.85) translateZ(0);
+
+.carouselSlide.isLeft,
+.carouselSlide.isRight {
+  width: min(75vw, 1100px);
+  height: clamp(320px, 58vh, 760px);
   opacity: 0.45;
   z-index: 3;
   filter: blur(0.4px);
 }
 
-.carouselSlide.isRight {
-  width: 75vw;
-  max-width: 1200px;
-  height: 65vh;
-  max-height: 800px;
-  transform: translate(calc(-50% + 42vw), -50%) scale(0.85) translateZ(0);
-  opacity: 0.45;
-  z-index: 3;
-  filter: blur(0.4px);
+.carouselSlide.isLeft {
+  transform: translate(calc(-50% - 42vw), -50%) scale(0.85) translateZ(0);
 }
-/* ---------- FAR SLIDES (Crossfade Out) ---------- */
+
+.carouselSlide.isRight {
+  transform: translate(calc(-50% + 42vw), -50%) scale(0.85) translateZ(0);
+}
+
 .carouselSlide.isFarLeft,
 .carouselSlide.isFarRight {
-  width: 75vw;
-  max-width: 1200px;
-  height: 65vh;
-  max-height: 800px;
+  width: min(75vw, 1100px);
+  height: clamp(320px, 58vh, 760px);
   opacity: 0;
   z-index: 1;
   filter: blur(2px);
@@ -346,31 +523,36 @@ img {
 .carouselSlide.isFarRight {
   transform: translate(calc(-50% + 65vw), -50%) scale(0.75) translateZ(-120px);
 }
-/* ---------- Hidden ---------- */
+
 .carouselSlide.isHidden {
-  transform:
-    translate(-50%, -50%)
-    scale(0.75)
-    translateZ(-200px);
+  transform: translate(-50%, -50%) scale(0.75) translateZ(-200px);
   opacity: 0;
   pointer-events: none;
 }
+
 /* =========================================================
-   ARROWS
+   CONTROLS
 ========================================================= */
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  position: relative;
+  z-index: 20;
+}
+
 .carouselArrow {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 44px;
   height: 44px;
   border-radius: 50%;
-
   border: 1.5px solid var(--border-grey, #ddd);
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(6px);
-
   cursor: pointer;
   transition: all 220ms ease;
 }
@@ -390,18 +572,11 @@ img {
   color: #333;
 }
 
-.carouselArrowLeft,
-.carouselArrowRight {
-  position: relative;
-}
-/* =========================================================
-   DOTS
-========================================================= */
 .dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 .dot {
@@ -411,7 +586,6 @@ img {
   border: 0;
   background: #8f8f8f;
   cursor: pointer;
-
   transition: all 240ms ease;
   opacity: 0.7;
 }
@@ -426,16 +600,11 @@ img {
   background: #5b5b5b;
   opacity: 1;
 }
+
 /* =========================================================
-   MOBILE SWIPE OPTIMISATION
+   AUTO-ADVANCE VISIBILITY HOOK
 ========================================================= */
-.carouselStage {
-  flex: 1;
-  min-height: 340px;
-}
-/* =========================================================
-  AUTO-ADVANCE VISIBILITY HOOK
-========================================================= */
+
 .carouselSection.isActive .carouselSlide.isCenter .carouselImage {
   animation: slowZoom 8s ease-in-out infinite alternate;
 }
@@ -491,8 +660,109 @@ img {
     opacity: 0.8;
   }
 }
+@media (max-width: 999px) {
+  .heroNavLeft,
+  .heroNavRight {
+    display: none;
+  }
+
+  .heroTopBar {
+    grid-template-columns: 1fr;
+    margin-bottom: 28px;
+    justify-items: center;
+  }
+
+  .heroTopBarRight {
+    display: none;
+  }
+
+  .heroMobileMenu {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 2300;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroTopBar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .heroNav {
+    justify-content: center;
+    gap: 18px 24px;
+  }
+
+  .heroNavLeft,
+  .heroNavRight {
+    justify-self: center;
+  }
+
+  .heroMain {
+    width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
+  .hero {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .heroInner {
+    min-height: calc(100svh - 24px);
+    padding: 22px 18px 28px;
+  }
+
+  .topLogoImage {
+    height: clamp(56px, 16vw, 88px);
+  }
+
+  .heroNavLink {
+    font-size: 0.95rem;
+    padding-bottom: 6px;
+  }
+
+  .heroButtons {
+    margin-top: 54px;
+    margin-bottom: 64px;
+  }
+
+  .heroMobileMenu {
+    top: 14px;
+    right: 14px;
+  }
+
+  .heroHamburger {
+    width: 46px;
+    height: 46px;
+  }
+
+  .heroHamburgerLine {
+    width: 20px;
+  }
+
+  .heroMobilePanel {
+    top: 64px;
+    right: 0;
+    width: min(280px, calc(100vw - 52px));
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .heroMobileNavLink {
+    font-size: 0.98rem;
+    padding: 12px 10px;
+  }
+  .accentDivider {
+    width: 220px;
+  }
+
   .missionContent {
     display: flex;
     flex-direction: column;
@@ -523,7 +793,6 @@ img {
     max-width: 280px;
   }
 }
-
 @keyframes slowZoom {
   from { transform: scale(1.02); }
   to   { transform: scale(1.12); }
