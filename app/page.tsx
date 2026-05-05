@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import Heromobilemenu from "../components/heromobilemenu";
 import Script from "next/script";
 import Reveal from "../components/reveal";
 import Carousel from "../components/carousel";
@@ -60,50 +62,82 @@ const carouselSlides = [
 export default function Home() {
   return (
     <main id="top" className="bbHome">
-      <section className="hero">
-        <div className="heroInner shell">
-          <Reveal>
-            <div className="topLogoWrap">
-              <a href="#top" className="topLogo" aria-label="Building Beyond home">
-                <Image
-                  src="/LogoDarkBackground.svg"
-                  alt="Building Beyond logo"
-                  width={320}
-                  height={140}
-                  priority
-                  className="topLogoImage"
-                />
-              </a>
-            </div>
-          </Reveal>
 
-          <Reveal delay={100}>
-            <div className="heroGraphicWrap">
-              <Image
-                src="/HeroStatementDark.svg"
-                alt="Train, Hire, Build Local"
-                width={900}
-                height={500}
-                priority
-                className="heroGraphic"
-              />
-            </div>
-          </Reveal>
+<section className="hero">
+<div className="heroInner">
+  <Heromobilemenu />
 
-          <Reveal delay={200}>
-            <p className="heroText">
-              Let&apos;s build Queensland from the ground up, supporting local
-              workers and training the next generation of apprentices.
-            </p>
-          </Reveal>
+  <div className="heroTopBar">
+    <Reveal>
+      <nav className="heroNav heroNavLeft" aria-label="Primary left navigation">
+        <Link href="/find-work" className="heroNavLink">
+          Find Work
+        </Link>
+        <Link href="/learn-more" className="heroNavLink">
+          Learn More
+        </Link>
+      </nav>
+    </Reveal>
 
-          <Reveal delay={300}>
-            <SignupCta />
-          </Reveal>
+    <Reveal delay={80}>
+      <div className="topLogoWrap heroLogoWrap">
+        <Link href="/" className="topLogo" aria-label="Building Beyond home">
+          <Image
+            src="/LogoDarkBackground.svg"
+            alt="Building Beyond logo"
+            width={320}
+            height={140}
+            priority
+            className="topLogoImage"
+          />
+        </Link>
+      </div>
+    </Reveal>
 
-          <div className="accentDivider" />
+    <Reveal delay={140}>
+      <nav className="heroNav heroNavRight" aria-label="Primary right navigation">
+        <Link href="/concept" className="heroNavLink">
+          Concept
+        </Link>
+        <Link href="/about-us" className="heroNavLink">
+          About Us
+        </Link>
+        <Link href="/contact" className="heroNavLink">
+          Contact
+        </Link>
+      </nav>
+    </Reveal>
+  </div>
+
+    <div className="heroMain">
+      <Reveal delay={180}>
+        <div className="heroGraphicWrap">
+          <Image
+            src="/HeroStatementDark.svg"
+            alt="Train, Hire, Build Local"
+            width={900}
+            height={500}
+            priority
+            className="heroGraphic"
+          />
         </div>
-      </section>
+      </Reveal>
+
+      <Reveal delay={240}>
+        <p className="heroText">
+          Let&apos;s build Queensland from the ground up, supporting local
+          workers and training the next generation of apprentices.
+        </p>
+      </Reveal>
+
+      <Reveal delay={300}>
+        <SignupCta />
+      </Reveal>
+
+      <div className="accentDivider" />
+    </div>
+  </div>
+</section>
 
       <section id="work" className="carouselSection">
         <div className="carouselFullscreen">
