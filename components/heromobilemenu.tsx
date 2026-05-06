@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const links = [
@@ -13,23 +13,67 @@ const links = [
 
 export default function Heromobilemenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
 
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
+      const clickedInsidePanel = panelRef.current?.contains(target);
+      const clickedHamburger = buttonRef.current?.contains(target);
+
+      if (!clickedInsidePanel && !clickedHamburger) {
+        closeMenu();
       }
     };
 
+    const handleWheel = (event: WheelEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+
+      const scrolledInsidePanel = panelRef.current?.contains(target);
+
+      if (!scrolledInsidePanel) {
+        closeMenu();
+      }
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+
+      const movedInsidePanel = panelRef.current?.contains(target);
+
+      if (!movedInsidePanel) {
+        closeMenu();
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown, { passive: true });
+    document.addEventListener("wheel", handleWheel, { passive: true });
+    document.addEventListener("touchmove", handleTouchMove, { passive: true });
     window.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("wheel", handleWheel);
+      document.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("keydown", handleEscape);
     };
   }, [isOpen]);
@@ -37,9 +81,10 @@ export default function Heromobilemenu() {
   return (
     <div className="heroMobileMenu">
       <button
+        ref={buttonRef}
         type="button"
         className={`heroHamburger ${isOpen ? "isOpen" : ""}`}
-        aria-label="Open navigation menu"
+        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
       >
@@ -52,17 +97,21 @@ export default function Heromobilemenu() {
         type="button"
         className={`heroMobileOverlay ${isOpen ? "isOpen" : ""}`}
         aria-label="Close navigation menu"
-        onClick={() => setIsOpen(false)}
+        onClick={closeMenu}
+        onTouchMove={closeMenu}
       />
 
-      <div className={`heroMobilePanel ${isOpen ? "isOpen" : ""}`}>
+      <div
+        ref={panelRef}
+        className={`heroMobilePanel ${isOpen ? "isOpen" : ""}`}
+      >
         <nav className="heroMobileNav" aria-label="Mobile navigation">
           {links.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
               className="heroMobileNavLink"
-              onClick={() => setIsOpen(false)}
+              onClick={closeMenu}
               style={{ transitionDelay: `${index * 45}ms` }}
             >
               {link.label}
