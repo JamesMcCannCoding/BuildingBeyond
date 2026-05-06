@@ -611,18 +611,20 @@ img {
 }
 
 .characterWrap {
-  position: absolute;
-  top: -200px;
-  max-width: 300px;
-  right: 110;
-  width: clamp(300px, 35vw, 500px);
-  margin-right: calc((100vw - 100%) / -2);
+  position: absolute !important;
+  top: -220px !important;
+  left: 46.5% !important;
+  right: auto !important;
+  transform: translateX(230px) !important;
+  width: 300px !important;
+  max-width: none !important;
+  margin: 0 !important;
   pointer-events: none;
   z-index: 1;
 }
 .missionHeaderContainer {
   position: relative;
-  width: 100%;
+  overflow: visible;
 }
 
 .missionCharacter {
@@ -679,15 +681,14 @@ img {
     z-index: 2300;
   }
   .characterWrap {
-    position: absolute;
-    top: -200px;
-    max-width: 300px;
-    right: 0;
-    width: clamp(300px, 35vw, 500px);
-    margin-right: calc((100vw - 100%) / -2);
-    pointer-events: none;
-    z-index: 99;
-    opacity: 0.8;
+    position: absolute !important;
+    top: -220px !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(230px) !important;
+    width: 300px !important;
+    max-width: none !important;
+    margin: 0 !important;
   }
 }
 
