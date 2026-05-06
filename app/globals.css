@@ -612,8 +612,9 @@ img {
 
 .characterWrap {
   position: absolute;
-  top: -150px;
-  right: 0;
+  top: -200px;
+  max-width: 300px;
+  right: 110;
   width: clamp(300px, 35vw, 500px);
   margin-right: calc((100vw - 100%) / -2);
   pointer-events: none;
@@ -650,7 +651,7 @@ img {
 @media (max-width: 1100px) {
   .characterWrap {
     width: 350px;
-    right: -20px;
+    right: 20px;
     opacity: 0.8;
   }
 }
@@ -677,6 +678,17 @@ img {
     right: 18px;
     z-index: 2300;
   }
+  .characterWrap {
+    position: absolute;
+    top: -200px;
+    max-width: 300px;
+    right: 0;
+    width: clamp(300px, 35vw, 500px);
+    margin-right: calc((100vw - 100%) / -2);
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.8;
+  }
 }
 
 @media (max-width: 900px) {
@@ -699,6 +711,17 @@ img {
 
   .heroMain {
     width: 100%;
+  }
+    .characterWrap {
+    position: absolute;
+    top: -200px;
+    max-width: 300px;
+    right: 0;
+    width: clamp(300px, 35vw, 500px);
+    margin-right: calc((100vw - 100%) / -2);
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.8;
   }
 }
 
