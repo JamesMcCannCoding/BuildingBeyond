@@ -710,17 +710,39 @@ img {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
     align-items: flex-start;
   }
 
   .heroInner {
     min-height: calc(100svh - 24px);
-    padding: 22px 18px 28px;
+    padding: 16px 18px 28px;
   }
 
   .topLogoImage {
-    height: clamp(56px, 16vw, 88px);
+    height: 108px;
+    width: auto;
+  }
+  
+  .heroTopBar {
+    display: block;
+    margin: 0 0 38px;
+    min-height: 0;
+  }
+
+  .heroTopBar > .reveal:first-child,
+  .heroTopBar > .reveal:last-child {
+    display: none;
+  }
+
+  .heroLogoWrap,
+  .topLogoWrap,
+  .topLogo {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .heroNavLink {
@@ -734,13 +756,13 @@ img {
   }
 
   .heroMobileMenu {
-    top: 14px;
-    right: 14px;
+    top: 10px;
+    right: 10px;
   }
 
   .heroHamburger {
-    width: 46px;
-    height: 46px;
+    width: 55px;
+    height: 55px;
   }
 
   .heroHamburgerLine {
@@ -761,6 +783,19 @@ img {
   }
   .accentDivider {
     width: 220px;
+  }
+
+  .heroGraphicWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+  }
+
+  .heroGraphic {
+    width: 80%;
+    max-width: 520px;
+    height: auto;
+    object-fit: contain;
   }
 
   .missionContent {
