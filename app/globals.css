@@ -313,12 +313,6 @@ img {
   margin-bottom: 90px;
 }
 
-.logoImage {
-  width: auto;
-  height: clamp(70px, 10vw, 115px);
-  object-fit: contain;
-}
-
 .heroGraphicWrap {
   display: flex;
   justify-content: center;
@@ -645,7 +639,7 @@ img {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .solutionSection {
   padding-top: 100px;
@@ -708,126 +702,6 @@ img {
   }
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding-left: 12px;
-    padding-right: 12px;
-    align-items: flex-start;
-  }
-
-  .heroInner {
-    min-height: calc(100svh - 24px);
-    padding: 16px 18px 28px;
-  }
-
-  .topLogoImage {
-    height: 108px;
-    width: auto;
-  }
-  
-  .heroTopBar {
-    display: block;
-    margin: 0 0 38px;
-    min-height: 0;
-  }
-
-  .heroTopBar > .reveal:first-child,
-  .heroTopBar > .reveal:last-child {
-    display: none;
-  }
-
-  .heroLogoWrap,
-  .topLogoWrap,
-  .topLogo {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .heroNavLink {
-    font-size: 0.95rem;
-    padding-bottom: 6px;
-  }
-
-  .heroButtons {
-    margin-top: 54px;
-    margin-bottom: 64px;
-  }
-
-  .heroMobileMenu {
-    top: 10px;
-    right: 10px;
-  }
-
-  .heroHamburger {
-    width: 55px;
-    height: 55px;
-  }
-
-  .heroHamburgerLine {
-    width: 20px;
-  }
-
-  .heroMobilePanel {
-    top: 64px;
-    right: 0;
-    width: min(280px, calc(100vw - 52px));
-    padding: 14px;
-    border-radius: 18px;
-  }
-
-  .heroMobileNavLink {
-    font-size: 0.98rem;
-    padding: 12px 10px;
-  }
-  .accentDivider {
-    width: 220px;
-  }
-
-  .heroGraphicWrap {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 26px;
-  }
-
-  .heroGraphic {
-    width: 80%;
-    max-width: 520px;
-    height: auto;
-    object-fit: contain;
-  }
-
-  .missionContent {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .characterWrap {
-    position: relative;
-    top: 0;
-    right: 0;
-    margin: 20px auto 0;
-    width: 280px;
-    opacity: 1;
-  }
-
-  .steppedList {
-    margin: 0 auto;
-  }
-
-  .solutionExtraImage {
-    width: 60%; 
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px; 
-  }
-
-  .solutionSection .sectionGraphic {
-    width: 80%;
-    max-width: 280px;
-  }
-}
 @keyframes slowZoom {
   from { transform: scale(1.02); }
   to   { transform: scale(1.12); }
@@ -846,13 +720,16 @@ img {
 section {
   scroll-margin-top: 0;
 }
+#mission.listSection.shell{
+  padding-right: 12px;
+}
 
 .listSection {
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  padding: 120px 0; 
+  padding: 30px 0; 
   margin-top: 0;
   width: 100%;
 }
@@ -1122,14 +999,6 @@ section {
 }
 
 .signupMessage {
-  margin: 16px auto 0;
-  max-width: 640px;
-  text-align: center;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.signupMessage {
   margin: 20px auto 0;
   max-width: 720px;
   text-align: center;
@@ -1152,15 +1021,113 @@ section {
     align-items: center;
     padding-bottom: 24px;
     min-height: 100svh;
+    padding-left: 12px;
+    padding-right: 12px;
+    align-items: flex-start;
   }
 
   .heroInner{
-    padding: 100px 20px 32px;
-    min-height: auto;
+    min-height: calc(100svh - 24px);
+    padding: 32px 18px 28px;
+  }
+  
+  .heroTopBar {
+    display: block;
+    margin: 0 0 38px;
+    min-height: 0;
   }
   
   .topLogo {
     margin-bottom: 1px;
+  }
+
+  .topLogoImage {
+    height: 108px;
+    width: auto;
+  }
+  .heroTopBar > .reveal:first-child,
+  .heroTopBar > .reveal:last-child {
+    display: none;
+  }
+
+  .heroLogoWrap,
+  .topLogoWrap,
+  .topLogo {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .heroNavLink {
+    font-size: 0.95rem;
+    padding-bottom: 6px;
+  }
+
+  .heroButtons {
+    margin-top: 54px;
+    margin-bottom: 64px;
+  }
+
+  .heroMobileMenu {
+    top: 10px;
+    right: 10px;
+  }
+
+  .heroHamburger {
+    width: 55px;
+    height: 55px;
+  }
+
+  .heroHamburgerLine {
+    width: 20px;
+  }
+
+  .heroMobilePanel {
+    top: 64px;
+    right: 0;
+    width: min(280px, calc(100vw - 52px));
+    padding: 14px;
+    border-radius: 18px;
+  }
+
+  .heroMobileNavLink {
+    font-size: 0.98rem;
+    padding: 12px 10px;
+  }
+  .accentDivider {
+    width: 220px;
+  }
+
+  .heroGraphicWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+  }
+
+  .heroGraphic {
+    width: 80%;
+    max-width: 520px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .missionContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .characterWrap {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 20px auto 0;
+    width: 280px;
+    opacity: 1;
+  }
+
+  .steppedList {
+    margin: 0 auto;
   }
 
   .heroButtons {
@@ -1366,10 +1333,10 @@ section {
     position: relative;
     top: 0;
     right: 0;
-    order: 2; 
+    order: 2;
     width: 100%; 
     max-width: 320px;
-    margin-top: 0px;
+    margin-top: -18px;
     margin-left: auto; 
     margin-right: calc((100vw - 100%) / -2) !important; 
     transform: translateX(0); 
@@ -1384,6 +1351,6 @@ section {
 
   .listSection {
     min-height: auto; 
-    padding: 30px 0;
+
   }
 }
