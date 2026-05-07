@@ -66,17 +66,8 @@ export default function SignupCta() {
         </button>
 
         <div className="signupShell">
-          <div className="signupProgress">
-            <p className="signupPercent">10%</p>
-            <div className="signupBar" aria-hidden="true">
-              <span className="signupBarFill" />
-            </div>
-          </div>
-
           <h2 id="signup-title" className="signupTitle">
-            HEADING TO ASK FOR
-            <br />
-            INFORMATION.
+            Sign up to receive the latest news and updates.
           </h2>
 
           <SubscriptionForm interestTag={interestTag} />
