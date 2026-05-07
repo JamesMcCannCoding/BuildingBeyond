@@ -357,7 +357,7 @@ img {
   background: var(--lime);
   color: #1E1818;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.32rem;
   font-weight: 820;
   letter-spacing: 0.05em;
   clip-path: polygon(2% 10%, 100% 4%, 99% 95%, 0 100%, 0 15%);
