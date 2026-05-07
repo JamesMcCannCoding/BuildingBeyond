@@ -65,7 +65,8 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email_address: email,
-          status_if_new: "pending",
+          status_if_new: "subscribed",
+          status: "subscribed",
           merge_fields: {
             FNAME: firstName,
             LNAME: lastName,
@@ -116,7 +117,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      message: "Thanks. Please check your inbox to confirm your signup.",
+      message: "Thanks. You have been added successfully.",
     });
   } catch {
     return NextResponse.json(
