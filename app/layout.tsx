@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,23 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <script
+        id="mcjs"
+        dangerouslySetInnerHTML={{
+          __html: `!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/0f3bdc042292e4cb14add00a5/6dd4a0cf1015313748cf7f1c0.js");`,
+        }}
+      />
       <body>{children}</body>
-
-      <Script id="mcjs" strategy="beforeInteractive">
-        {`
-          !function(c,h,i,m,p){
-            m=c.createElement(h),
-            p=c.getElementsByTagName(h)[0],
-            m.async=1,
-            m.src=i,
-            p.parentNode.insertBefore(m,p)
-          }(
-            document,
-            "script",
-            "https://chimpstatic.com/mcjs-connected/js/users/0f3bdc042292e4cb14add00a5/6dd4a0cf1015313748cf7f1c0.js"
-          );
-        `}
-      </Script>
     </html>
   );
 }
