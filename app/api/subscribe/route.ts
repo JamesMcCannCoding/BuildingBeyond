@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import crypto from "crypto";
+import crypto from "node:crypto";
+
+export const runtime = "nodejs";
 
 type SubscribeBody = {
   firstName?: string;
@@ -63,7 +65,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email_address: email,
-          status_if_new: "pending", // use "subscribed" only if appropriate for your consent flow
+          status_if_new: "pending",
           merge_fields: {
             FNAME: firstName,
             LNAME: lastName,
@@ -85,7 +87,7 @@ export async function POST(request: Request) {
     }
 
     if (interestTag) {
-      await fetch(
+      const tagResponse = await fetch(
         `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}/tags`,
         {
           method: "POST",
@@ -98,6 +100,19 @@ export async function POST(request: Request) {
           }),
         }
       );
+
+      if (!tagResponse.ok) {
+        const tagData = await tagResponse.json().catch(() => null);
+
+        return NextResponse.json(
+          {
+            message:
+              tagData?.detail ||
+              "The user was added, but the Mailchimp tag could not be applied.",
+          },
+          { status: tagResponse.status }
+        );
+      }
     }
 
     return NextResponse.json({
