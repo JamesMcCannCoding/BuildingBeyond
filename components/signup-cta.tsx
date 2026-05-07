@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import SubscriptionForm from "./subscriptionForm";
 
 export default function SignupCta() {
@@ -66,9 +67,28 @@ export default function SignupCta() {
         </button>
 
         <div className="signupShell">
+          <div className="signupBrand">
+            <div className="signupBrandBadge">
+              <Image
+                src="/LogoWhiteBackground.svg"
+                alt="Building Beyond logo"
+                width={180}
+                height={72}
+                className="signupBrandLogo"
+                priority
+              />
+            </div>
+          </div>
+
           <h2 id="signup-title" className="signupTitle">
-            Sign up to receive the latest news and updates.
+            Sign up to receive the latest 
+            <br></br>news and updates
           </h2>
+
+          <p className="signupIntro">
+            Join our mailing list to stay informed about new opportunities,
+            announcements, and industry updates.
+          </p>
 
           <SubscriptionForm interestTag={interestTag} />
         </div>
