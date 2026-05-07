@@ -911,34 +911,6 @@ section {
   padding: 42px clamp(22px, 4vw, 56px) 32px;
 }
 
-.signupProgress {
-  width: 100%;
-  margin-bottom: 22px;
-}
-
-.signupPercent {
-  margin: 0 0 10px;
-  font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 2.2vw, 2.3rem);
-  line-height: 1;
-  font-weight: 900;
-  color: var(--text);
-}
-
-.signupBar {
-  width: 100%;
-  height: 14px;
-  background: #aca7a7;
-  overflow: hidden;
-}
-
-.signupBarFill {
-  display: block;
-  width: 22%;
-  height: 100%;
-  background: var(--lime);
-}
-
 .signupTitle {
   margin: 0;
   max-width: 520px;
