@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import crypto from "crypto";
+import crypto from "node:crypto";
 
 export const runtime = "nodejs";
 
@@ -29,7 +29,6 @@ export async function POST(request: Request) {
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { message: "Please enter a valid email address." },
@@ -66,11 +65,12 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           email_address: email,
-          status_if_new: "pending",
+          status_if_new: "subscribed",
+          status: "subscribed",
           merge_fields: {
             FNAME: firstName,
             LNAME: lastName,
-            PHONE: mobile,
+            PHONE: mobile || "",
           },
         }),
       }
@@ -117,7 +117,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      message: "Thanks. Please check your inbox to confirm your signup.",
+      message: "Thanks. You have been added successfully.",
     });
   } catch {
     return NextResponse.json(

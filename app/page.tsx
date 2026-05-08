@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Heromobilemenu from "../components/heromobilemenu";
-import Script from "next/script";
 import Reveal from "../components/reveal";
 import Carousel from "../components/carousel";
 import SignupCta from "../components/signup-cta";
@@ -225,20 +224,7 @@ export default function Home() {
         ))}
       </div>
     </section>
-
             <div className="bottomAccentBar" />
-
-      <Script id="mcjs" strategy="afterInteractive">
-        {`
-          !function(c,h,i,m,p){
-            m=c.createElement(h),
-            p=c.getElementsByTagName(h)[0],
-            m.async=1,
-            m.src=i,
-            p.parentNode.insertBefore(m,p)
-          }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/YOUR-CODE-HERE.js");
-        `}
-      </Script>
     </main>
   );
 }

@@ -112,7 +112,7 @@ export default function SubscriptionForm({
         </div>
 
         <div className="signupField">
-          <label htmlFor="mobile">PHONE NO.</label>
+          <label htmlFor="mobile">MOBILE NUMBER</label>
           <input
             id="mobile"
             name="mobile"
@@ -129,7 +129,7 @@ export default function SubscriptionForm({
           className="signupSubmit"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "SENDING..." : "NEXT"}
+          {status === "loading" ? "SENDING..." : "SUBMIT"}
         </button>
       </div>
 

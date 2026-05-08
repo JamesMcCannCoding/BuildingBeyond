@@ -2,9 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import SubscriptionForm from "./subscriptionForm";
 
-export default function SignupCta() {
+type SignupCtaProps = {
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  primaryTag?: string;
+  secondaryTag?: string;
+  containerClassName?: string;
+};
+
+export default function SignupCta({
+  primaryLabel = "LOOK FOR WORK",
+  secondaryLabel = "ENTER THE INDUSTRY",
+  primaryTag = "look-for-work",
+  secondaryTag = "enter-the-industry",
+  containerClassName = "heroButtons",
+}: SignupCtaProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [interestTag, setInterestTag] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -66,18 +81,27 @@ export default function SignupCta() {
         </button>
 
         <div className="signupShell">
-          <div className="signupProgress">
-            <p className="signupPercent">10%</p>
-            <div className="signupBar" aria-hidden="true">
-              <span className="signupBarFill" />
+          <div className="signupBrand">
+            <div className="signupBrandBadge">
+              <Image
+                src="/LogoWhiteBackground.svg"
+                alt="Building Beyond logo"
+                width={180}
+                height={72}
+                className="signupBrandLogo"
+                priority
+              />
             </div>
           </div>
 
           <h2 id="signup-title" className="signupTitle">
-            HEADING TO ASK FOR
-            <br />
-            INFORMATION.
+            Sign up to receive the latest news and updates.
           </h2>
+
+          <p className="signupIntro">
+            Join our mailing list to stay informed about new opportunities,
+            announcements, and industry updates.
+          </p>
 
           <SubscriptionForm interestTag={interestTag} />
         </div>
@@ -87,21 +111,21 @@ export default function SignupCta() {
 
   return (
     <>
-      <div className="heroButtons">
+      <div className={containerClassName}>
         <button
           type="button"
           className="actionButton"
-          onClick={() => openForm("look-for-work")}
+          onClick={() => openForm(primaryTag)}
         >
-          LOOK FOR WORK
+          {primaryLabel}
         </button>
 
         <button
           type="button"
           className="actionButton"
-          onClick={() => openForm("enter-the-industry")}
+          onClick={() => openForm(secondaryTag)}
         >
-          ENTER THE INDUSTRY
+          {secondaryLabel}
         </button>
       </div>
 
