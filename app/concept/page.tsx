@@ -49,7 +49,15 @@ export default function ConceptPage() {
                 </Link>
             </nav>
 
-            <Heromobilemenu />
+            <Heromobilemenu
+                links={[
+                    { href: "/find-work", label: "Find Work" },
+                    { href: "/learn-more", label: "Learn More" },
+                    { href: "/", label: "Home" },
+                    { href: "/about-us", label: "About Us" },
+                    { href: "/contact", label: "Contact" },
+                ]}
+                />
           </div>
         </header>
 

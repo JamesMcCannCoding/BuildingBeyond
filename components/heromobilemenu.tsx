@@ -3,7 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
-const links = [
+type MobileNavLink = {
+  href: string;
+  label: string;
+};
+
+type HeromobilemenuProps = {
+  links?: MobileNavLink[];
+};
+
+const defaultLinks: MobileNavLink[] = [
   { href: "/find-work", label: "Find Work" },
   { href: "/learn-more", label: "Learn More" },
   { href: "/concept", label: "Concept" },
@@ -11,7 +20,9 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Heromobilemenu() {
+export default function Heromobilemenu({
+  links = defaultLinks,
+}: HeromobilemenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -98,7 +109,6 @@ export default function Heromobilemenu() {
         className={`heroMobileOverlay ${isOpen ? "isOpen" : ""}`}
         aria-label="Close navigation menu"
         onClick={closeMenu}
-        onTouchMove={closeMenu}
       />
 
       <div

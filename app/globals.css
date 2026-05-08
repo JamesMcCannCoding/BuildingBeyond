@@ -694,6 +694,9 @@ img {
   padding-top: 100px;
   padding-bottom: 120px;
 }
+.conceptHeader .heroMobileMenu {
+  display: none;
+}
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 1100px) {
@@ -736,13 +739,13 @@ img {
     max-width: none !important;
     margin: 0 !important;
   }
-    .conceptNavLeft,
-  .conceptNavRight {
-    display: none;
+  .conceptHeader .conceptNav.conceptNavLeft,
+  .conceptHeader .conceptNav.conceptNavRight {
+    display: none !important;
   }
 
   .conceptHeader {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     justify-items: center;
     margin-bottom: 34px;
   }
@@ -753,7 +756,7 @@ img {
   }
 
   .conceptHeader .heroMobileMenu {
-    display: block;
+    display: block !important;
     position: absolute;
     top: 0;
     right: 0;
@@ -1738,4 +1741,22 @@ section {
   .conceptHeader .heroMobilePanel {
     width: min(280px, calc(100vw - 24px));
   }
+
+      /* LIGHT PAGE HAMBURGER OVERRIDE
+        for Concept / About Us pages */
+
+      .conceptHeader .heroHamburger {
+        background: rgba(28, 28, 28, 0.94);
+        border: 1px solid rgba(28, 28, 28, 0.9);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+      }
+
+      .conceptHeader .heroHamburger:hover {
+        background: #111111;
+        border-color: #111111;
+      }
+
+      .conceptHeader .heroHamburgerLine {
+        background: #ffffff;
+      }
 }
