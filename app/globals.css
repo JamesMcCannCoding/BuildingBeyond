@@ -946,7 +946,7 @@ section {
   opacity: 0;
   pointer-events: none;
   transition: opacity 320ms ease;
-  z-index: 1200;
+  z-index: 3000;
 }
 
 .signupOverlay.isOpen {
@@ -974,7 +974,7 @@ section {
   box-shadow:
     0 30px 90px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  z-index: 1300;
+  z-index: 3100;
 }
 
 .signupPanel.isOpen {
@@ -998,7 +998,7 @@ section {
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   transition: transform 0.2s ease, background 0.2s ease;
-  z-index: 2;
+  z-index: 3200;
 }
 
 .signupClose:hover {
@@ -1362,6 +1362,8 @@ section {
 }
 
 /* RESPONSIVE */
+
+
 @media (max-width: 768px) {
   .hero {
     justify-content: flex-start;
@@ -1741,7 +1743,55 @@ section {
   .conceptHeader .heroMobilePanel {
     width: min(280px, calc(100vw - 24px));
   }
+@media (min-width: 390px) and (max-width: 768px) {
+  .heroInner {
+    min-height: calc(100svh - 34px);
+    padding: 34px 18px 22px;
+  }
 
+  .heroTopBar {
+    margin-bottom: 20px;
+  }
+  .heroGraphicWrap{
+    margin-top: 100px;
+  }
+  .heroMain {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroMain > .reveal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .heroMain > .reveal:nth-child(2) {
+    margin-bottom: auto;
+  }
+
+  .heroGraphicWrap {
+    margin-bottom: 40px;
+  }
+
+  .heroText {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .heroButtons {
+    margin-top: 0;
+    margin-bottom: 36px;
+    gap: 24px;
+  }
+
+  .accentDivider {
+    margin: 0 auto;
+  }
+}
       /* LIGHT PAGE HAMBURGER OVERRIDE
         for Concept / About Us pages */
 
