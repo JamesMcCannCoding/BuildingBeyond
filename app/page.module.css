@@ -1,0 +1,506 @@
+.heroSection,
+.thirdHeroSection,
+.fourthHeroSection,
+.fifthHeroSection,
+.sixthHeroSection,
+.seventhHeroSection {
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  max-height: var(--section-height);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+}
+
+.heroSection {
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroContent {
+  width: 100%;
+  min-height: inherit;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.heroStack {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroArtwork {
+  position: relative;
+  width: min(94vw, 1320px);
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  animation: headingReveal 1s ease-out 0.25s forwards;
+}
+
+.headingImage {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.getStartedButton {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  width: min(42vw, 550px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 3;
+}
+
+.getStartedButton::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -85%;
+  width: 55%;
+  height: 180%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.12) 65%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  transition: left 0.65s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.getStartedButton:hover::before {
+  left: 130%;
+}
+
+.getStartedButton:hover {
+  transform: translateX(-50%) scale(1.015);
+}
+
+.buttonImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.secondSection {
+  width: 100%;
+  min-height: 100svh;
+  background-image: url("/YOUR_SECOND_SECTION_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.secondStack {
+  width: 100%;
+  min-height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.secondHeadingImage {
+  width: min(92vw, 1320px);
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  animation: headingReveal 1s ease-out 0.25s forwards;
+}
+
+.carouselSection {
+  position: relative;
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  max-height: var(--section-height);
+  background: #000;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+
+  overflow: hidden;
+}
+
+.carouselSectionInner {
+  width: 100%;
+  height: 100%;
+}
+
+.heroSection,
+.carouselSection {
+  scroll-snap-align: start;
+}
+
+.thirdHeroSection {
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  background-image: url("/BB_Web_LP_4_Why_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thirdHeroStack {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.thirdHeroArtwork {
+  position: relative;
+  width: min(94vw, 1320px);
+
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  animation: headingReveal 1s ease-out 0.25s forwards;
+}
+
+.thirdHeadingImage {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.fourthHeroSection {
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  background-image: url("/BB_Web_LP_5_How_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fourthHeroStack {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.fourthHeroArtwork {
+  position: relative;
+  width: min(94vw, 1320px);
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  animation: headingReveal 1s ease-out 0.25s forwards;
+}
+
+.fourthHeadingImage {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.fifthHeroSection {
+  position: relative;
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  background-image: url("/BB_Web_LP_6_MoreJob_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.fifthHeroOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.04);
+  animation: fifthHeroReveal 1s ease-out 0.25s forwards;
+}
+
+.fifthHeadingImage {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+}
+
+@keyframes fifthHeroReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sixthHeroSection {
+  position: relative;
+  width: 100%;
+  height: var(--section-height);
+  min-height: var(--section-height);
+  background-image: url("/BB_Web_LP_7_RealCareer_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.sixthHeroOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.04);
+  animation: fifthHeroReveal 1s ease-out 0.25s forwards;
+}
+
+.sixthHeadingImage {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+}
+
+@keyframes sixthHeroReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes buttonReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.seventhHeroSection {
+  position: relative;
+  background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.seventhHeroStack {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.seventhHeroArtwork {
+  position: relative;
+  width: min(94vw, 1320px);
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  animation: headingReveal 1s ease-out 0.25s forwards;
+}
+
+.seventhHeroOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.04);
+  animation: seventhHeroReveal 1s ease-out 0.25s forwards;
+}
+
+.seventhHeadingImage {
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+}
+
+@keyframes seventhHeroReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Desktop navbar height */
+@media (min-width: 901px) {
+  .heroSection {
+    min-height: calc(100svh - var(--nav-height));
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .heroArtwork {
+    width: 115vw;
+  }
+
+  .getStartedButton {
+    width: min(58vw, 420px);
+    bottom: 3%;
+  }
+
+  .secondHeadingImage {
+      width: 115vw;
+    }
+
+  .thirdHeroArtwork {
+      width: 115vw;
+    }
+
+  .fourthHeroArtwork {
+      width: 115vw;
+    }
+
+  .seventhHeroArtwork {
+    width: 115vw;
+    }
+  }
+
+/* Small phones */
+@media (max-width: 430px) {
+  .heroContent {
+    padding: 0;
+  }
+
+  .headingImage {
+    width: 155vw;
+    }
+
+  .heroArtwork {
+    width: 175vw;
+  }
+
+  .getStartedButton {
+    width: 85vw;
+    min-width: 270px;
+    bottom: 3%;
+  }
+
+  .secondStack {
+    padding: 0;
+  }
+
+  .secondHeadingImage {
+    width: 150vw;
+  }
+
+  .thirdHeroStack {
+    padding: 0;
+  }
+
+  .thirdHeroArtwork {
+    width: 155vw;
+  }
+
+  .fourthHeroStack {
+    padding: 0;
+  }
+
+  .fourthHeroArtwork {
+    width: 155vw;
+  }
+
+  .seventhHeroStack {
+    padding: 0;
+  }
+
+  .seventhHeroArtwork {
+    width: 155vw;
+  }
+}

@@ -1,0 +1,182 @@
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  overflow: hidden;
+  background: #000;
+}
+
+.carouselViewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carouselTrack {
+  display: flex;
+  height: 100%;
+  transition: transform 0.75s ease;
+  will-change: transform;
+}
+
+.carouselSlide {
+  position: relative;
+  min-width: 100%;
+  flex: 0 0 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.carouselImage {
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Dark fade behind bottom controls */
+.carouselWrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 180px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.45),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.carouselControls {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(10px, 2vw, 14px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 34px);
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.62);
+  border: 1px solid rgba(198, 234, 47, 0.5);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+.carouselArrow {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(198, 234, 47, 0.75);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.85);
+  color: #c6ea2f;
+  font-size: 42px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.carouselArrow:hover {
+  background: #c6ea2f;
+  color: #000;
+  border-color: #c6ea2f;
+  transform: scale(1.08);
+}
+
+.carouselDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carouselDot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.carouselDotActive {
+  width: 38px;
+  background: #c6ea2f;
+}
+
+.carouselDot:hover {
+  background: #c6ea2f;
+  transform: scale(1.16);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .carouselControls {
+    bottom: 28px;
+    gap: 18px;
+    padding: 10px 14px;
+  }
+
+  .carouselArrow {
+    width: 42px;
+    height: 42px;
+    font-size: 38px;
+  }
+
+  .carouselDotActive {
+    width: 32px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 430px) {
+  .carouselImage {
+    object-position: center center;
+  }
+
+  .carouselControls {
+    width: calc(100% - 32px);
+    bottom: 20px;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+  }
+
+  .carouselArrow {
+    width: 38px;
+    height: 38px;
+    font-size: 34px;
+  }
+
+  .carouselDots {
+    gap: 8px;
+  }
+
+  .carouselDot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .carouselDotActive {
+    width: 26px;
+  }
+}
