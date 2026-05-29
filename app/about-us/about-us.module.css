@@ -1,0 +1,148 @@
+.aboutPage {
+  width: 100%;
+  min-height: var(--section-height);
+  background: #f5f2f2;
+  color: #000;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: clamp(38px, 5vw, 72px) clamp(22px, 5vw, 72px);
+  scroll-snap-align: none;
+}
+
+.aboutContent {
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutTitle {
+  display: inline-block;
+  margin: 0 0 clamp(28px, 4vw, 44px);
+
+  background: #c6ea2f;
+  color: #000;
+
+  padding: 10px 18px 12px;
+
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 0.95;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.aboutText {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.aboutText p {
+  margin: 0 0 22px;
+  color: #000;
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.aboutText a {
+  color: #00335f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.aboutText a:hover {
+  color: #000;
+}
+
+.aboutActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  margin-top: clamp(32px, 5vw, 58px);
+}
+
+.aboutButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 280px;
+  padding: 17px 26px;
+
+  background: #c6ea2f;
+  color: #000;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 950;
+  letter-spacing: 0.08em;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.aboutButton:hover {
+  transform: translateY(-2px);
+  background: #000;
+  color: #c6ea2f;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .aboutPage {
+    padding: 36px 24px 52px;
+  }
+
+  .aboutContent {
+    max-width: 100%;
+  }
+
+  .aboutText {
+    max-width: 100%;
+  }
+
+  .aboutActions {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .aboutPage {
+    padding: 30px 20px 46px;
+  }
+
+  .aboutTitle {
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .aboutText p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .aboutActions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .aboutButton {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 18px;
+  }
+}

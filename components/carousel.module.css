@@ -1,3 +1,7 @@
+.conceptPage {
+  scroll-snap-align: none;
+}
+
 .carouselWrapper {
   position: relative;
   width: 100%;
