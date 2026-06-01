@@ -71,25 +71,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   min-width: 280px;
   padding: 17px 26px;
-
   background: #c6ea2f;
   color: #000;
-
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
-
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   font-weight: 950;
   letter-spacing: 0.08em;
-
   transition:
     transform 0.2s ease,
     background 0.2s ease,
     color 0.2s ease;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
 }
 
 .findWorkButton:hover {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DisableScrollSnap from "@/components/disable-scroll-snap";
 import styles from "./find-work.module.css";
+import RegisterModal from "@/components/register-modal";
 
 export default function FindWorkPage() {
   return (
@@ -37,9 +38,7 @@ export default function FindWorkPage() {
           </div>
 
           <div className={styles.findWorkActions}>
-            <Link href="/contact" className={styles.findWorkButton}>
-              Register Interest
-            </Link>
+            <RegisterModal buttonClassName={styles.findWorkButton} />
 
             <Link href="/learn-more" className={styles.findWorkButton}>
               Learn More
