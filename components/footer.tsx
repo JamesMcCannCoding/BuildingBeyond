@@ -22,7 +22,7 @@ export default function Footer() {
 
           <Link href="/" className={styles.footerLogoLink} aria-label="Building Beyond 2032 Home">
             <Image
-              src="/LogoWhiteBackground.svg"
+              src="/LogoWhiteBackground.png"
               alt="Building Beyond 2032"
               width={260}
               height={100}

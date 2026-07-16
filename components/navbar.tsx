@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,6 +30,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+
   // Close mobile menu whenever the route changes
   useEffect(() => {
     setMenuOpen(false);
@@ -38,8 +41,57 @@ export default function Navbar() {
   // Prevent body scroll while menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Close menu when user taps outside, scrolls, swipes, or presses Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeIfClickedOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+
+      if (menuRef.current?.contains(target)) return;
+      if (menuButtonRef.current?.contains(target)) return;
+
+      setMenuOpen(false);
+    };
+
+    const closeOnScrollAttempt = () => {
+      setMenuOpen(false);
+    };
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", closeIfClickedOutside);
+    document.addEventListener("touchstart", closeIfClickedOutside, {
+      passive: true,
+    });
+
+    window.addEventListener("wheel", closeOnScrollAttempt, { passive: true });
+    window.addEventListener("touchmove", closeOnScrollAttempt, {
+      passive: true,
+    });
+    window.addEventListener("scroll", closeOnScrollAttempt, { passive: true });
+
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", closeIfClickedOutside);
+      document.removeEventListener("touchstart", closeIfClickedOutside);
+
+      window.removeEventListener("wheel", closeOnScrollAttempt);
+      window.removeEventListener("touchmove", closeOnScrollAttempt);
+      window.removeEventListener("scroll", closeOnScrollAttempt);
+
+      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [menuOpen]);
 
@@ -82,8 +134,11 @@ export default function Navbar() {
 
         {/* Hamburger button — mobile only */}
         <button
+          ref={menuButtonRef}
           type="button"
-          className={`${styles.menuButton} ${menuOpen ? styles.menuButtonOpen : ""}`}
+          className={`${styles.menuButton} ${
+            menuOpen ? styles.menuButtonOpen : ""
+          }`}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
@@ -97,11 +152,14 @@ export default function Navbar() {
 
       {/* Mobile slide-down menu */}
       <div
+        ref={menuRef}
         id="mobile-navigation"
         role="navigation"
         aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
-        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}
+        className={`${styles.mobileMenu} ${
+          menuOpen ? styles.mobileMenuOpen : ""
+        }`}
       >
         {mobileLinks.map((link) => (
           <Link

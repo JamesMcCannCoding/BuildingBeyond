@@ -362,47 +362,70 @@
 
 .seventhHeroSection {
   position: relative;
+
   background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
-}
-
-.seventhHeroStack {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.seventhHeroArtwork {
-  position: relative;
-  width: min(94vw, 1320px);
-  opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  animation: headingReveal 1s ease-out 0.25s forwards;
 }
 
 .seventhHeroOverlay {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
   opacity: 0;
   transform: scale(1.04);
   animation: seventhHeroReveal 1s ease-out 0.25s forwards;
 }
 
-.seventhHeadingImage {
-  object-fit: cover;
+/* This targets the picture only inside section 7 */
+.seventhHeroOverlay .responsivePicture {
+  width: min(94vw, 1500px);
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* This targets the image only inside section 7 */
+.seventhHeroOverlay .responsiveHeroImage {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+
+  object-fit: contain;
   object-position: center center;
-  pointer-events: none;
+
+  display: block;
+}
+
+.responsivePicture {
+  display: block;
+  width: 100%;
+}
+
+.responsiveHeroImage {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 @keyframes seventhHeroReveal {
@@ -444,7 +467,7 @@
     }
 
   .fourthHeroArtwork {
-      width: 115vw;
+      width: 92vw;
     }
 
   .seventhHeroArtwork {
@@ -493,7 +516,15 @@
   }
 
   .fourthHeroArtwork {
-    width: 155vw;
+    width: 100vw;
+  }
+
+  .fifthHeroStack {
+    padding: 0;
+  }
+
+  .fifthHeroArtwork {
+    width: 100vw;
   }
 
   .seventhHeroStack {
@@ -501,6 +532,6 @@
   }
 
   .seventhHeroArtwork {
-    width: 155vw;
+    width: 100vw;
   }
 }

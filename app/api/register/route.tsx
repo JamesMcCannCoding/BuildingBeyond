@@ -8,6 +8,8 @@ type RegisterInterestPayload = {
   email?: string;
 };
 
+const MAILCHIMP_TAG = "buildingbeyond2032";
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as RegisterInterestPayload;
@@ -17,9 +19,9 @@ export async function POST(request: Request) {
     const mobile = body.mobile?.trim();
     const email = body.email?.trim().toLowerCase();
 
-    if (!firstName || !lastName || !email) {
+    if (!firstName || !lastName || !mobile || !email) {
       return NextResponse.json(
-        { message: "First name, last name, and email are required." },
+        { message: "First name, last name, mobile number, and email are required." },
         { status: 400 }
       );
     }
@@ -40,14 +42,16 @@ export async function POST(request: Request) {
       .update(email)
       .digest("hex");
 
-    const mailchimpUrl = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}`;
+    const authHeader = `Basic ${Buffer.from(`anystring:${apiKey}`).toString(
+      "base64"
+    )}`;
 
-    const response = await fetch(mailchimpUrl, {
+    const memberUrl = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}`;
+
+    const memberResponse = await fetch(memberUrl, {
       method: "PUT",
       headers: {
-        Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString(
-          "base64"
-        )}`,
+        Authorization: authHeader,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -56,23 +60,55 @@ export async function POST(request: Request) {
         merge_fields: {
           FNAME: firstName,
           LNAME: lastName,
-          PHONE: mobile || "",
+          PHONE: mobile,
         },
       }),
     });
 
-    const data = await response.json();
+    const memberData = await memberResponse.json();
 
-    if (!response.ok) {
-      console.error("Mailchimp error:", data);
+    if (!memberResponse.ok) {
+      console.error("Mailchimp member error:", memberData);
 
       return NextResponse.json(
         {
           message:
-            data.detail ||
+            memberData.detail ||
             "Something went wrong while adding the contact to Mailchimp.",
         },
-        { status: response.status }
+        { status: memberResponse.status }
+      );
+    }
+
+    const tagUrl = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}/tags`;
+
+    const tagResponse = await fetch(tagUrl, {
+      method: "POST",
+      headers: {
+        Authorization: authHeader,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tags: [
+          {
+            name: MAILCHIMP_TAG,
+            status: "active",
+          },
+        ],
+      }),
+    });
+
+    if (!tagResponse.ok) {
+      const tagData = await tagResponse.json();
+      console.error("Mailchimp tag error:", tagData);
+
+      return NextResponse.json(
+        {
+          message:
+            tagData.detail ||
+            "The contact was added, but the Mailchimp tag could not be applied.",
+        },
+        { status: tagResponse.status }
       );
     }
 

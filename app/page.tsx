@@ -44,15 +44,18 @@ export default function Home() {
       <section className={styles.thirdHeroSection}>
         <div className={styles.thirdHeroStack}>
           <div className={styles.thirdHeroArtwork}>
-            <Image
-              src="/BB_Web_LP_4_Why_Text.png"
-              alt="Building Beyond 2032 section heading"
-              width={1920}
-              height={934}
-              quality={100}
-              unoptimized
-              className={styles.thirdHeadingImage}
-            />
+            <picture className={styles.responsivePicture}>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/BB_Mobile_LP_4_Why_Text.png"
+              />
+
+              <img
+                src="/BB_Web_LP_4_Why_Text.png"
+                alt="Building Beyond 2032 section heading"
+                className={styles.responsiveHeroImage}
+              />
+            </picture>
           </div>
         </div>
       </section>
@@ -60,57 +63,70 @@ export default function Home() {
       <section className={styles.fourthHeroSection}>
         <div className={styles.fourthHeroStack}>
           <div className={styles.fourthHeroArtwork}>
-            <Image
-              src="/BB_Web_LP_5_How_Text.png"
-              alt="Building Beyond 2032 section heading"
-              width={1920}
-              height={934}
-              quality={100}
-              unoptimized
-              className={styles.fourthHeadingImage}
-            />
+            <picture className={styles.responsivePicture}>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/BB_Mobile_LP_5_How_Text.png"
+              />
+
+              <img
+                src="/BB_Web_LP_5_How_Text.png"
+                alt="Building Beyond 2032 section heading"
+                className={styles.responsiveHeroImage}
+              />
+            </picture>
           </div>
         </div>
       </section>
 
       <section className={styles.fifthHeroSection}>
         <div className={styles.fifthHeroOverlay}>
-          <Image
-            src="/BB_Web_LP_6_MoreJob_Text.png"
-            alt="More than just a job"
-            width={1920}
-            height={629}
-            quality={100}
-            unoptimized
-            className={styles.fifthHeadingImage}
-          />
+          <picture className={styles.responsivePicture}>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/BB_Mobile_LP_6_MoreJob_Text.png"
+              />
+
+              <img
+                src="/BB_Web_LP_6_MoreJob_Text.png"
+                alt="Building Beyond 2032 section heading"
+                className={styles.responsiveHeroImage}
+              />
+            </picture>
         </div>
       </section>
 
       <section className={styles.sixthHeroSection}>
         <div className={styles.sixthHeroOverlay}>
-          <Image
-            src="/BB_Web_LP_7_RealCareer_Text.png"
-            alt="Real career"
-            width={1920}
-            height={629}
-            quality={100}
-            unoptimized
-            className={styles.sixthHeadingImage}
-          />
+            <picture className={styles.responsivePicture}>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/BB_Mobile_LP_7_RealCareer_Text.png"
+              />
+
+              <img
+                src="/BB_Web_LP_7_RealCareer_Text.png"
+                alt="Building Beyond 2032 section heading"
+                className={styles.responsiveHeroImage}
+              />
+            </picture>
         </div>
       </section>
 
       <section className={styles.seventhHeroSection}>
         <div className={styles.seventhHeroOverlay}>
-          <Image
-            src="/BB_Web_LP_8_FooterImage_Text.png"
-            alt="Ready for a better future"
-            fill
-            quality={100}
-            unoptimized
-            className={styles.seventhHeadingImage}
-          />
+            <picture className={styles.responsivePicture}>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/BB_Mobile_LP_7_FutureReady.png"
+              />
+
+              <img
+                src="/BB_Web_LP_8_FutureText_Text.png"
+                alt="Building Beyond 2032 section heading"
+                className={styles.responsiveHeroImage}
+              />
+            </picture>
         </div>
       </section>
     </>

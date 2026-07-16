@@ -1,24 +1,27 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
 import styles from "./carousel.module.css";
 
 const carouselImages = [
   {
-    src: "/BB_Web_LP_3_Test1.png",
+    desktopSrc: "/BB_Web_LP_3_Test1.png",
+    mobileSrc: "/BB_Mobile_LP_3_Test1.png",
     alt: "Building Beyond carousel image 1",
   },
   {
-    src: "/BB_Web_LP_3_Test2.png",
+    desktopSrc: "/BB_Web_LP_3_Test2.png",
+    mobileSrc: "/BB_Mobile_LP_3_Test2.png",
     alt: "Building Beyond carousel image 2",
   },
   {
-    src: "/BB_Web_LP_3_Test3.png",
+    desktopSrc: "/BB_Web_LP_3_Test3.png",
+    mobileSrc: "/BB_Mobile_LP_3_Test3.png",
     alt: "Building Beyond carousel image 3",
   },
   {
-    src: "/BB_Web_LP_3_Test4.png",
+    desktopSrc: "/BB_Web_LP_3_Test4.png",
+    mobileSrc: "/BB_Mobile_LP_3_Test4.png",
     alt: "Building Beyond carousel image 4",
   },
 ];
@@ -53,17 +56,16 @@ export default function Carousel() {
           }}
         >
           {carouselImages.map((image) => (
-            <div className={styles.carouselSlide} key={image.src}>
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={1920}
-                height={694}
-                quality={100}
-                unoptimized
-                sizes="100vw"
-                className={styles.carouselImage}
-              />
+            <div className={styles.carouselSlide} key={image.desktopSrc}>
+              <picture className={styles.carouselPicture}>
+                <source media="(max-width: 640px)" srcSet={image.mobileSrc} />
+
+                <img
+                  src={image.desktopSrc}
+                  alt={image.alt}
+                  className={styles.carouselImage}
+                />
+              </picture>
             </div>
           ))}
         </div>
@@ -82,7 +84,7 @@ export default function Carousel() {
         <div className={styles.carouselDots}>
           {carouselImages.map((image, index) => (
             <button
-              key={image.src}
+              key={image.desktopSrc}
               type="button"
               className={`${styles.carouselDot} ${
                 index === currentIndex ? styles.carouselDotActive : ""
