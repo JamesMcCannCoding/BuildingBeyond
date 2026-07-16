@@ -1,4 +1,9 @@
+/* =========================================================
+   PAGE SECTION BASE
+   ========================================================= */
+
 .heroSection,
+.carouselSection,
 .thirdHeroSection,
 .fourthHeroSection,
 .fifthHeroSection,
@@ -13,32 +18,51 @@
   overflow: hidden;
 }
 
+/* =========================================================
+   REVEAL ANIMATION TRIGGERS
+   ========================================================= */
+
+.headingRevealVisible {
+  animation: headingReveal 1s ease-out 0.15s forwards;
+}
+
+.overlayRevealVisible {
+  animation: overlayReveal 1s ease-out 0.15s forwards;
+}
+
+.carouselRevealVisible {
+  animation: carouselReveal 1s ease-out 0.15s forwards;
+}
+
+/* =========================================================
+   HERO 1 — MAIN HERO
+
+   EASY SIZE CONTROLS:
+   --hero-image-width: controls main heading image size
+   --hero-image-scale: extra scaling without breaking animation
+   --hero-button-width: controls button size
+   --hero-button-bottom: controls button vertical position
+   ========================================================= */
+
 .heroSection {
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
+  --hero-image-width: min(94vw, 1320px);
+  --hero-image-scale: 1;
+  --hero-button-width: min(42vw, 550px);
+  --hero-button-bottom: 4%;
+
   background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
 
-.heroContent {
-  width: 100%;
-  min-height: inherit;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
 }
 
 .heroStack {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,10 +70,10 @@
 
 .heroArtwork {
   position: relative;
-  width: min(94vw, 1320px);
+  width: var(--hero-image-width);
+
   opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  animation: headingReveal 1s ease-out 0.25s forwards;
+  transform: translateY(28px) scale(calc(var(--hero-image-scale) * 0.96));
 }
 
 .headingImage {
@@ -63,12 +87,15 @@
 .getStartedButton {
   position: absolute;
   left: 50%;
-  bottom: 4%;
+  bottom: var(--hero-button-bottom);
   transform: translateX(-50%);
-  width: min(42vw, 550px);
+
+  width: var(--hero-button-width);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
   cursor: pointer;
   text-decoration: none;
@@ -80,8 +107,10 @@
   position: absolute;
   top: -40%;
   left: -85%;
+
   width: 55%;
   height: 180%;
+
   background: linear-gradient(
     120deg,
     transparent 0%,
@@ -90,6 +119,7 @@
     rgba(255, 255, 255, 0.12) 65%,
     transparent 100%
   );
+
   transform: skewX(-18deg);
   transition: left 0.65s ease;
   pointer-events: none;
@@ -110,257 +140,156 @@
   display: block;
 }
 
-.secondSection {
-  width: 100%;
-  min-height: 100svh;
-  background-image: url("/YOUR_SECOND_SECTION_BG.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.secondStack {
-  width: 100%;
-  min-height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.secondHeadingImage {
-  width: min(92vw, 1320px);
-  max-width: none;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  animation: headingReveal 1s ease-out 0.25s forwards;
-}
+/* =========================================================
+   CAROUSEL SECTION
+   ========================================================= */
 
 .carouselSection {
   position: relative;
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
-  max-height: var(--section-height);
   background: #000;
+
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-
-  overflow: hidden;
 }
 
 .carouselSectionInner {
   width: 100%;
   height: 100%;
+
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
 }
 
-.heroSection,
-.carouselSection {
-  scroll-snap-align: start;
-}
+/* =========================================================
+   HERO 3 — WHY SECTION
+
+   EASY SIZE CONTROL:
+   --hero-image-width
+   ========================================================= */
 
 .thirdHeroSection {
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
+  --hero-image-width: min(94vw, 1320px);
+  --hero-image-scale: 1;
+
   background-image: url("/BB_Web_LP_4_Why_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .thirdHeroStack {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 24px;
 }
 
 .thirdHeroArtwork {
   position: relative;
-  width: min(94vw, 1320px);
+  width: var(--hero-image-width);
 
   opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  animation: headingReveal 1s ease-out 0.25s forwards;
+  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 0.96));
 }
 
-.thirdHeadingImage {
-  width: 100%;
-  max-width: none;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
+/* =========================================================
+   HERO 4 — HOW SECTION
+
+   EASY SIZE CONTROL:
+   --hero-image-width
+   ========================================================= */
 
 .fourthHeroSection {
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
+  --hero-image-width: min(105vw, 1320px);
+  --hero-image-scale: 1;
+
   background-image: url("/BB_Web_LP_5_How_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .fourthHeroStack {
   width: 100%;
   height: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 24px;
 }
 
 .fourthHeroArtwork {
   position: relative;
-  width: min(94vw, 1320px);
-  opacity: 0;
-  transform: translateY(28px) scale(0.96);
-  animation: headingReveal 1s ease-out 0.25s forwards;
-}
+  width: var(--hero-image-width);
 
-.fourthHeadingImage {
-  width: 100%;
-  max-width: none;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  opacity: 0;
+  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 0.96));
 }
 
 .fifthHeroSection {
+  --hero-image-width: 100%;
+  --hero-picture-height: 100%;
+  --hero-image-height: auto;
+  --hero-image-max-height: 100%;
+  --hero-image-max-width: none;
+  --hero-overlay-padding: 24px;
+
   position: relative;
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
+
   background-image: url("/BB_Web_LP_6_MoreJob_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: hidden;
 }
 
-.fifthHeroOverlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(1.04);
-  animation: fifthHeroReveal 1s ease-out 0.25s forwards;
-}
-
-.fifthHeadingImage {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: contain;
-  object-position: center center;
-  display: block;
-  pointer-events: none;
-}
-
-@keyframes fifthHeroReveal {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+/* =========================================================
+   HERO 6 — REAL CAREER SECTION
+   ========================================================= */
 
 .sixthHeroSection {
+  --hero-image-width: 100%;
+  --hero-picture-height: 100%;
+  --hero-image-height: auto;
+  --hero-image-max-height: 100%;
+  --hero-image-max-width: none;
+  --hero-overlay-padding: 24px;
+
   position: relative;
-  width: 100%;
-  height: var(--section-height);
-  min-height: var(--section-height);
+
   background-image: url("/BB_Web_LP_7_RealCareer_BG.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  overflow: hidden;
 }
 
-.sixthHeroOverlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(1.04);
-  animation: fifthHeroReveal 1s ease-out 0.25s forwards;
-}
-
-.sixthHeadingImage {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  object-fit: contain;
-  object-position: center center;
-  display: block;
-  pointer-events: none;
-}
-
-@keyframes sixthHeroReveal {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes headingReveal {
-  from {
-    opacity: 0;
-    transform: translateY(28px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes buttonReveal {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* =========================================================
+   HERO 7 — FUTURE READY SECTION
+   ========================================================= */
 
 .seventhHeroSection {
+  --hero-image-width: min(94vw, 1500px);
+  --hero-picture-height: 100%;
+  --hero-image-height: auto;
+  --hero-image-max-height: 100%;
+  --hero-image-max-width: none;
+  --hero-overlay-padding: 24px;
+  --hero-picture-scale: 1.2;
+
   position: relative;
 
   background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
@@ -371,10 +300,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  overflow: hidden;
 }
 
+/* =========================================================
+   SHARED OVERLAY HERO STYLES
+   Applies to hero 5, 6 and 7
+   ========================================================= */
+
+.fifthHeroOverlay,
+.sixthHeroOverlay,
 .seventhHeroOverlay {
   position: absolute;
   inset: 0;
@@ -386,34 +320,45 @@
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
+  padding: var(--hero-overlay-padding);
 
   opacity: 0;
   transform: scale(1.04);
-  animation: seventhHeroReveal 1s ease-out 0.25s forwards;
 }
 
-/* This targets the picture only inside section 7 */
+.fifthHeroOverlay .responsivePicture,
+.sixthHeroOverlay .responsivePicture,
 .seventhHeroOverlay .responsivePicture {
-  width: min(94vw, 1500px);
-  height: 100%;
+  width: var(--hero-image-width);
+  height: var(--hero-picture-height);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transform: scale(var(--hero-picture-scale, 1));
+  transform-origin: center center;
 }
 
-/* This targets the image only inside section 7 */
+.fifthHeroOverlay .responsiveHeroImage,
+.sixthHeroOverlay .responsiveHeroImage,
 .seventhHeroOverlay .responsiveHeroImage {
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: var(--hero-image-height);
+  max-width: var(--hero-image-max-width);
+  max-height: var(--hero-image-max-height);
 
   object-fit: contain;
   object-position: center center;
 
   display: block;
+  pointer-events: none;
 }
+
+/* =========================================================
+   SHARED RESPONSIVE IMAGE STYLES
+   Applies to picture/img elements
+   ========================================================= */
 
 .responsivePicture {
   display: block;
@@ -424,11 +369,30 @@
   width: 100%;
   max-width: none;
   height: auto;
+
   object-fit: contain;
+  object-position: center center;
+
   display: block;
 }
 
-@keyframes seventhHeroReveal {
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes headingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 0.96));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(var(--hero-image-scale, 1));
+  }
+}
+
+@keyframes overlayReveal {
   from {
     opacity: 0;
     transform: scale(1.04);
@@ -440,98 +404,134 @@
   }
 }
 
-/* Desktop navbar height */
+@keyframes carouselReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   DESKTOP NAVBAR HEIGHT FIX
+   ========================================================= */
+
 @media (min-width: 901px) {
   .heroSection {
     min-height: calc(100svh - var(--nav-height));
   }
 }
 
-/* Tablet */
-@media (max-width: 768px) {
-  .heroArtwork {
-    width: 115vw;
+/* =========================================================
+   TABLET / LARGE MOBILE
+   431px to 768px
+   ========================================================= */
+
+@media (min-width: 431px) and (max-width: 768px) {
+  .heroSection {
+    --hero-image-width: min(100vw, 1320px);
+    --hero-image-scale: 1.4;
+    --hero-button-width: min(58vw, 420px);
+    --hero-button-bottom: 3%;
   }
 
-  .getStartedButton {
-    width: min(58vw, 420px);
-    bottom: 3%;
+  .thirdHeroSection {
+    --hero-image-width: 115vw;
   }
 
-  .secondHeadingImage {
-      width: 115vw;
-    }
-
-  .thirdHeroArtwork {
-      width: 115vw;
-    }
-
-  .fourthHeroArtwork {
-      width: 92vw;
-    }
-
-  .seventhHeroArtwork {
-    width: 115vw;
-    }
+  .fourthHeroSection {
+    --hero-image-width: 115vw;
   }
 
-/* Small phones */
+  .fifthHeroSection,
+  .sixthHeroSection,
+  .seventhHeroSection {
+    --hero-image-width: 100%;
+    --hero-picture-height: 100%;
+    --hero-image-height: 100%;
+    --hero-image-max-width: 100%;
+    --hero-image-max-height: 100%;
+    --hero-overlay-padding: 0 14px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   430px and below
+   ========================================================= */
+
 @media (max-width: 430px) {
-  .heroContent {
-    padding: 0;
-  }
-
-  .headingImage {
-    width: 155vw;
-    }
-
-  .heroArtwork {
-    width: 175vw;
+  .heroSection {
+    --hero-image-width: 124vw;
+    --hero-image-scale: 1.5;
+    --hero-button-width: 1vw;
+    --hero-button-scale: .7vw;
+    --hero-button-bottom: 3%;
   }
 
   .getStartedButton {
-    width: 85vw;
-    min-width: 270px;
-    bottom: 3%;
+    min-width: 210px;
   }
 
-  .secondStack {
-    padding: 0;
-  }
-
-  .secondHeadingImage {
-    width: 150vw;
-  }
-
-  .thirdHeroStack {
-    padding: 0;
-  }
-
-  .thirdHeroArtwork {
-    width: 155vw;
-  }
-
+  .thirdHeroStack,
   .fourthHeroStack {
     padding: 0;
   }
 
-  .fourthHeroArtwork {
-    width: 100vw;
+  .thirdHeroSection {
+    --hero-image-width: 155vw;
   }
 
-  .fifthHeroStack {
-    padding: 0;
+  .fourthHeroSection {
+    --hero-image-width: 115vw;
   }
 
-  .fifthHeroArtwork {
-    width: 100vw;
+  .fifthHeroSection,
+  .sixthHeroSection,
+  .seventhHeroSection {
+    --hero-image-width: 100%;
+    --hero-picture-height: 100%;
+    --hero-image-height: 100%;
+    --hero-image-max-width: 100%;
+    --hero-image-max-height: 100%;
+    --hero-overlay-padding: 0 10px;
+  }
+}
+
+/* =========================================================
+   IPHONE + IPAD SIZE BOOST
+   Increases hero 3 and hero 4 images by 10%.
+   This is placed near the bottom so it overrides earlier
+   phone/tablet width settings.
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .thirdHeroSection {
+    --hero-image-scale: 1.1;
   }
 
-  .seventhHeroStack {
-    padding: 0;
+  .fourthHeroSection {
+    --hero-image-scale: 1.1;
   }
+}
 
-  .seventhHeroArtwork {
-    width: 100vw;
+/* =========================================================
+   MOBILE SNAP SCROLL OFF
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .heroSection,
+  .carouselSection,
+  .thirdHeroSection,
+  .fourthHeroSection,
+  .fifthHeroSection,
+  .sixthHeroSection,
+  .seventhHeroSection {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
   }
 }

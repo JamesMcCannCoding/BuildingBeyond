@@ -60,3 +60,21 @@ canvas {
     --section-height: calc(100dvh - var(--nav-height) + 2px );
   }
 }
+
+@media (max-width: 768px) {
+  html,
+  body {
+    scroll-snap-type: none;
+  }
+
+  .heroSection,
+  .carouselSection,
+  .thirdHeroSection,
+  .fourthHeroSection,
+  .fifthHeroSection,
+  .sixthHeroSection,
+  .seventhHeroSection {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+}
