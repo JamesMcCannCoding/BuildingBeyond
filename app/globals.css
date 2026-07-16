@@ -64,17 +64,21 @@ canvas {
 @media (max-width: 768px) {
   html,
   body {
-    scroll-snap-type: none;
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  .heroSection,
-  .carouselSection,
-  .thirdHeroSection,
-  .fourthHeroSection,
-  .fifthHeroSection,
-  .sixthHeroSection,
-  .seventhHeroSection {
-    scroll-snap-align: none;
-    scroll-snap-stop: normal;
+  main {
+    scroll-snap-type: none !important;
+    overflow-y: visible !important;
+  }
+
+  section,
+  .heroSection {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+    min-height: 100svh;
   }
 }
