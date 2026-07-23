@@ -573,6 +573,17 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 1300px) {
+  .fourthHeroSection {
+    --hero-image-width: min(88vw, 980px);
+    --hero-image-scale: .9;
+  }
+
+  .fourthHeroStack {
+    padding: 12px 20px;
+  }
+}
+
 /* =========================================================
    MOBILE SNAP SCROLL OFF
    ========================================================= */
