@@ -435,7 +435,7 @@
 @media (min-width: 431px) and (max-width: 768px) {
   .heroSection {
     --hero-image-width: min(100vw, 1320px);
-    --hero-image-scale: 1;
+    --hero-image-scale: 1.5;
     --hero-button-width: min(58vw, 420px);
     --hero-button-bottom: 3%;
   }
