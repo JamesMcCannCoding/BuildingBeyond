@@ -573,10 +573,10 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1500px) {
+@media (min-width: 769px) and (max-width: 1700px) {
   .fourthHeroSection {
     --hero-image-width: min(88vw, 980px);
-    --hero-image-scale: .8;
+    --hero-image-scale: 0.8;
   }
 
   .fourthHeroStack {
