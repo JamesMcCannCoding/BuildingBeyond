@@ -585,7 +585,7 @@
   .fifthHeroSection,
   .sixthHeroSection,
   .seventhHeroSection {
-    scroll-snap-align: none;
-    scroll-snap-stop: normal;
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
   }
 }

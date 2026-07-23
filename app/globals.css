@@ -7,6 +7,7 @@
   --nav-height: 92px;
   --section-height: calc(100dvh - var(--nav-height) + 2px);
 }
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +19,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
   background: var(--background);
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -27,7 +27,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  scroll-snap-type: y proximity;
+  overflow-x: hidden;
 }
 
 a {
@@ -54,14 +54,27 @@ canvas {
   padding-top: var(--nav-height);
 }
 
+/* Desktop navbar height */
 @media (min-width: 901px) {
   :root {
     --nav-height: clamp(86px, 10vw, 154px);
-    --section-height: calc(100dvh - var(--nav-height) + 2px );
+    --section-height: calc(100dvh - var(--nav-height) + 2px);
   }
 }
 
+/* Snap scroll ON for desktop only */
+@media (min-width: 769px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+}
+
+/* Snap scroll OFF for mobile/tablet */
 @media (max-width: 768px) {
+  :root {
+    --section-height: calc(100svh - var(--nav-height) + 2px);
+  }
+
   html,
   body {
     scroll-snap-type: none !important;
@@ -73,12 +86,5 @@ canvas {
   main {
     scroll-snap-type: none !important;
     overflow-y: visible !important;
-  }
-
-  section,
-  .heroSection {
-    scroll-snap-align: none !important;
-    scroll-snap-stop: normal !important;
-    min-height: 100svh;
   }
 }
