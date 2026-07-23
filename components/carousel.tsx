@@ -5,23 +5,23 @@ import styles from "./carousel.module.css";
 
 const carouselImages = [
   {
-    desktopSrc: "/BB_Web_LP_3_Test1.png",
-    mobileSrc: "/BB_Mobile_LP_3_Test1.png",
+    desktopSrc: "/BB_Web_C_1.webp",
+    mobileSrc: "/BB_Mobile_C_1.webp",
     alt: "Building Beyond carousel image 1",
   },
   {
-    desktopSrc: "/BB_Web_LP_3_Test2.png",
-    mobileSrc: "/BB_Mobile_LP_3_Test2.png",
+    desktopSrc: "/BB_Web_C_2.webp",
+    mobileSrc: "/BB_Mobile_C_2.webp",
     alt: "Building Beyond carousel image 2",
   },
   {
-    desktopSrc: "/BB_Web_LP_3_Test3.png",
-    mobileSrc: "/BB_Mobile_LP_3_Test3.png",
+    desktopSrc: "/BB_Web_C_3.webp",
+    mobileSrc: "/BB_Mobile_C_3.webp",
     alt: "Building Beyond carousel image 3",
   },
   {
-    desktopSrc: "/BB_Web_LP_3_Test4.png",
-    mobileSrc: "/BB_Mobile_LP_3_Test4.png",
+    desktopSrc: "/BB_Web_C_4.webp",
+    mobileSrc: "/BB_Mobile_C_4.webp",
     alt: "Building Beyond carousel image 4",
   },
 ];

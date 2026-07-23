@@ -36,21 +36,18 @@
 
 /* =========================================================
    HERO 1 — MAIN HERO
-
-   EASY SIZE CONTROLS:
-   --hero-image-width: controls main heading image size
-   --hero-image-scale: extra scaling without breaking animation
-   --hero-button-width: controls button size
-   --hero-button-bottom: controls button vertical position
    ========================================================= */
 
 .heroSection {
   --hero-image-width: min(94vw, 1320px);
   --hero-image-scale: 1;
   --hero-button-width: min(42vw, 550px);
+  --hero-button-scale: 1;
   --hero-button-bottom: 4%;
 
-  background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
+  --hero-heading-y: 35px;
+
+  background-image: url("/BB32_Web_Heading_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -71,6 +68,7 @@
 .heroArtwork {
   position: relative;
   width: var(--hero-image-width);
+  aspect-ratio: 1920 / 1080;
 
   opacity: 0;
   transform: translateY(28px) scale(calc(var(--hero-image-scale) * 0.96));
@@ -82,13 +80,16 @@
   height: auto;
   object-fit: contain;
   display: block;
+  transform: translateY(var(--hero-heading-y));
 }
 
 .getStartedButton {
   position: absolute;
   left: 50%;
   bottom: var(--hero-button-bottom);
-  transform: translateX(-50%);
+
+  transform: translateX(-50%) scale(var(--hero-button-scale));
+  transform-origin: center center;
 
   width: var(--hero-button-width);
 
@@ -172,7 +173,7 @@
   --hero-image-width: min(94vw, 1320px);
   --hero-image-scale: 1;
 
-  background-image: url("/BB_Web_LP_4_Why_BG.png");
+  background-image: url("/BB_Web_Dark_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -198,7 +199,7 @@
   width: var(--hero-image-width);
 
   opacity: 0;
-  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 0.96));
+  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 1));
 }
 
 /* =========================================================
@@ -212,7 +213,7 @@
   --hero-image-width: min(105vw, 1320px);
   --hero-image-scale: 1;
 
-  background-image: url("/BB_Web_LP_5_How_BG.png");
+  background-image: url("/BB_Web_Green_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -238,7 +239,7 @@
   width: var(--hero-image-width);
 
   opacity: 0;
-  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 0.96));
+  transform: translateY(28px) scale(calc(var(--hero-image-scale, 1) * 1));
 }
 
 .fifthHeroSection {
@@ -251,7 +252,7 @@
 
   position: relative;
 
-  background-image: url("/BB_Web_LP_6_MoreJob_BG.png");
+  background-image: url("/BB_Web_Dark_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -271,7 +272,7 @@
 
   position: relative;
 
-  background-image: url("/BB_Web_LP_7_RealCareer_BG.png");
+  background-image: url("/BB_Web_Green_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -292,7 +293,7 @@
 
   position: relative;
 
-  background-image: url("/BB32_Web_LP_2_HeadingSection_BG.png");
+  background-image: url("/BB_Web_Dark_BG.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -434,7 +435,7 @@
 @media (min-width: 431px) and (max-width: 768px) {
   .heroSection {
     --hero-image-width: min(100vw, 1320px);
-    --hero-image-scale: 1.4;
+    --hero-image-scale: 1;
     --hero-button-width: min(58vw, 420px);
     --hero-button-bottom: 3%;
   }
@@ -465,16 +466,69 @@
    ========================================================= */
 
 @media (max-width: 430px) {
-  .heroSection {
-    --hero-image-width: 124vw;
+    .heroSection {
+    --hero-image-width: 185vw;
     --hero-image-scale: 1.5;
-    --hero-button-width: 1vw;
-    --hero-button-scale: .7vw;
-    --hero-button-bottom: 3%;
+
+    --hero-button-width: 60vw;
+    --hero-button-scale: 1;
+
+    --hero-heading-y: 0px;
+  }
+
+  .heroStack {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .heroArtwork {
+    width: var(--hero-image-width);
+    max-width: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0px;
+
+    aspect-ratio: auto;
+  }
+
+  .headingImage {
+    position: relative;
+    inset: auto;
+
+    width: 100%;
+    height: auto;
+
+    transform: none;
+    object-fit: contain;
+    display: block;
   }
 
   .getStartedButton {
-    min-width: 210px;
+    position: relative;
+    left: auto;
+    bottom: auto;
+
+    width: var(--hero-button-width);
+    min-width: 0;
+
+    margin-top: -4px;
+
+    transform: scale(var(--hero-button-scale));
+    transform-origin: center center;
+  }
+
+  .getStartedButton:hover {
+    transform: scale(calc(var(--hero-button-scale) * 1.015));
   }
 
   .thirdHeroStack,

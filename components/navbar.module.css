@@ -41,6 +41,7 @@
   width: clamp(145px, 44vw, 210px);
   height: auto;
   display: block;
+  background: transparent;
 }
 
 /* ── Hamburger button ─────────────────────────────────────── */
@@ -50,18 +51,14 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-
   border: 0;
   background: transparent;
   cursor: pointer;
   padding: 8px;
   gap: 5px;
-
-  /* Sits above the mobile menu overlay */
   position: relative;
   z-index: 1001;
 }

@@ -114,7 +114,7 @@ export default function Navbar() {
           aria-label="Building Beyond 2032 Home"
         >
           <Image
-            src="/LogoDarkBackground.svg"
+            src="/LogoWhiteGreen.webp"
             alt="Building Beyond 2032"
             width={260}
             height={100}

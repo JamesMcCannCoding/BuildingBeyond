@@ -13,14 +13,14 @@ export default function Home() {
             visibleClassName={styles.headingRevealVisible}
           >
             <img
-              src="/BB32_Web_LP_2_HeadingSection_Text2.png"
+              src="/BB_Web_Heading.webp"
               alt="Building Beyond 2032"
               className={styles.headingImage}
             />
 
             <Link href="/find-work" className={styles.getStartedButton}>
               <img
-                src="/BB32_Web_LP_2_HeadingSection_Text_Button.png"
+                src="/Get_Started_Button.webp"
                 alt="Get started"
                 className={styles.buttonImage}
               />
@@ -47,11 +47,11 @@ export default function Home() {
             <picture className={styles.responsivePicture}>
               <source
                 media="(max-width: 768px)"
-                srcSet="/BB_Mobile_LP_4_Why_Text.png"
+                srcSet="/BB_Mobile_Why.webp"
               />
 
               <img
-                src="/BB_Web_LP_4_Why_Text.png"
+                src="/BB_Web_Why.webp"
                 alt="Building Beyond 2032 section heading"
                 className={styles.responsiveHeroImage}
               />
@@ -69,11 +69,11 @@ export default function Home() {
             <picture className={styles.responsivePicture}>
               <source
                 media="(max-width: 768px)"
-                srcSet="/BB_Mobile_LP_5_How_Text.png"
+                srcSet="/BB_Mobile_How.webp"
               />
 
               <img
-                src="/BB_Web_LP_5_How_Text.png"
+                src="/BB_Web_How.webp"
                 alt="Building Beyond 2032 section heading"
                 className={styles.responsiveHeroImage}
               />
@@ -90,11 +90,11 @@ export default function Home() {
           <picture className={styles.responsivePicture}>
             <source
               media="(max-width: 768px)"
-              srcSet="/BB_Mobile_LP_6_MoreJob_Text.png"
+              srcSet="/BB_Mobile_MoreJobs.webp"
             />
 
             <img
-              src="/BB_Web_LP_6_MoreJob_Text.png"
+              src="/BB_Web_MoreJob.webp"
               alt="Building Beyond 2032 section heading"
               className={styles.responsiveHeroImage}
             />
@@ -110,11 +110,11 @@ export default function Home() {
           <picture className={styles.responsivePicture}>
             <source
               media="(max-width: 768px)"
-              srcSet="/BB_Mobile_LP_7_RealCareer_Text.png"
+              srcSet="/BB_Mobile_RealCareer.webp"
             />
 
             <img
-              src="/BB_Web_LP_7_RealCareer_Text.png"
+              src="/BB_Web_RealCareer.webp"
               alt="Building Beyond 2032 section heading"
               className={styles.responsiveHeroImage}
             />
@@ -130,11 +130,11 @@ export default function Home() {
           <picture className={styles.responsivePicture}>
             <source
               media="(max-width: 768px)"
-              srcSet="/BB_Mobile_LP_7_FutureReady.png"
+              srcSet="/BB_Mobile_FooterImage.webp"
             />
 
             <img
-              src="/BB_Web_LP_8_FutureText_Text.png"
+              src="/BB_Web_Future.webp"
               alt="Building Beyond 2032 section heading"
               className={styles.responsiveHeroImage}
             />
