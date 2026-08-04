@@ -1,7 +1,34 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Carousel from "@/components/carousel";
 import RevealOnScroll from "@/components/reveal-on-scroll";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Building Beyond 2032 | Construction Jobs and Careers in Queensland",
+  },
+  description:
+    "Building Beyond 2032 connects Queenslanders with real construction jobs, apprenticeships, career pathways, and opportunities linked to the 2032 Games and beyond.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Building Beyond 2032 | Construction Jobs and Careers in Queensland",
+    description:
+      "Real jobs. Real careers. Build your future in construction with Building Beyond 2032.",
+    url: "https://www.buildingbeyond2032.com.au/",
+    siteName: "Building Beyond 2032",
+    type: "website",
+    locale: "en_AU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Building Beyond 2032 | Construction Jobs and Careers in Queensland",
+    description:
+      "Building Beyond 2032 connects Queenslanders with construction jobs, apprenticeships, pathways, and career opportunities.",
+  },
+};
 
 export default function Home() {
   return (

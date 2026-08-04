@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import DisableScrollSnap from "@/components/disable-scroll-snap";
 import RegisterModal from "@/components/register-modal";
 import styles from "./find-work.module.css";
+
+export const metadata: Metadata = {
+  title: "Find Construction Work in Queensland",
+  description:
+    "Register your interest in construction job opportunities connected to Building Beyond 2032 and Queensland's growing construction industry.",
+};
 
 export default function FindWorkPage() {
   return (
