@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import DisableScrollSnap from "@/components/disable-scroll-snap";
+import RegisterModal from "@/components/register-modal";
 import styles from "./learn-more.module.css";
 
 export const metadata: Metadata = {
@@ -61,15 +61,7 @@ export default function LearnMorePage() {
             </p>
           </div>
 
-          <div className={styles.learnMoreActions}>
-            <Link href="/contact" className={styles.learnMoreButton}>
-              Register Interest
-            </Link>
-
-            <Link href="/find-work" className={styles.learnMoreButton}>
-              Find Work
-            </Link>
-          </div>
+          <RegisterModal variant="inline" />
         </div>
       </section>
     </>
