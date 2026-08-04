@@ -20,6 +20,7 @@
 }
 
 .aboutTitle {
+  position: relative;
   display: inline-block;
   margin: 0 0 clamp(28px, 4vw, 44px);
 
@@ -33,6 +34,35 @@
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  animation: aboutTitleReveal 0.9s ease-out 0.15s both;
+}
+
+.aboutTitle::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -80%;
+
+  width: 45%;
+  height: 180%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+  animation: aboutTitleShine 1.1s ease-out 0.8s forwards;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .aboutText {
@@ -98,6 +128,32 @@
   color: #c6ea2f;
 }
 
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes aboutTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aboutTitleShine {
+  from {
+    left: -80%;
+  }
+
+  to {
+    left: 130%;
+  }
+}
+
 /* Tablet */
 @media (max-width: 900px) {
   .aboutPage {
@@ -144,5 +200,12 @@
     width: 100%;
     min-width: 0;
     padding: 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aboutTitle,
+  .aboutTitle::before {
+    animation: none;
   }
 }

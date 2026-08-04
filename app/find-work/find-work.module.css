@@ -20,6 +20,7 @@
 }
 
 .findWorkTitle {
+  position: relative;
   display: inline-block;
   margin: 0 0 clamp(28px, 4vw, 44px);
 
@@ -33,6 +34,35 @@
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  animation: findWorkTitleReveal 0.9s ease-out 0.15s both;
+}
+
+.findWorkTitle::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -80%;
+
+  width: 45%;
+  height: 180%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+  animation: findWorkTitleShine 1.1s ease-out 0.8s forwards;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .findWorkText {
@@ -71,29 +101,61 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   min-width: 280px;
   padding: 17px 26px;
+
+  border: 0;
   background: #c6ea2f;
   color: #000;
+
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
+
+  font-family: inherit;
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   font-weight: 950;
   letter-spacing: 0.08em;
+
+  cursor: pointer;
+
   transition:
     transform 0.2s ease,
     background 0.2s ease,
     color 0.2s ease;
-    border: 0;
-    cursor: pointer;
-    font-family: inherit;
 }
 
 .findWorkButton:hover {
   transform: translateY(-2px);
   background: #000;
   color: #c6ea2f;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes findWorkTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes findWorkTitleShine {
+  from {
+    left: -80%;
+  }
+
+  to {
+    left: 130%;
+  }
 }
 
 /* Tablet */
@@ -142,5 +204,12 @@
     width: 100%;
     min-width: 0;
     padding: 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .findWorkTitle,
+  .findWorkTitle::before {
+    animation: none;
   }
 }

@@ -1,6 +1,11 @@
-import Link from "next/link";
 import DisableScrollSnap from "@/components/disable-scroll-snap";
 import styles from "./contact.module.css";
+
+const emailHref = `mailto:qntqueries@cfmeu.org?subject=${encodeURIComponent(
+  "Building Beyond 2032 enquiry"
+)}&body=${encodeURIComponent(
+  "Hi Building Beyond 2032 team,\n\nI would like to make an enquiry about:\n\n"
+)}`;
 
 export default function ContactPage() {
   return (
@@ -29,23 +34,11 @@ export default function ContactPage() {
               real opportunities in the construction industry and helping build
               a workforce that lasts well beyond the 2032 Games.
             </p>
-
-            <p>
-              If you are looking for work, you can register your interest below.
-              If you are new to the industry, you can also learn more about
-              pathways into construction.
-            </p>
           </div>
 
-          <div className={styles.contactActions}>
-            <Link href="/find-work" className={styles.contactButton}>
-              I&apos;m looking for work
-            </Link>
-
-            <Link href="/learn-more" className={styles.contactButton}>
-              I want to enter the industry
-            </Link>
-          </div>
+          <a href={emailHref} className={styles.emailButton}>
+            Email Us
+          </a>
         </div>
       </section>
     </>

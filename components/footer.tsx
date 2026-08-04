@@ -20,15 +20,29 @@ export default function Footer() {
 
           <p>Real jobs. Real careers. Build your future in construction.</p>
 
-          <Link href="/" className={styles.footerLogoLink} aria-label="Building Beyond 2032 Home">
+          <div className={styles.footerLogoStack}>
+            <Link
+              href="/"
+              className={styles.footerLogoLink}
+              aria-label="Building Beyond 2032 Home"
+            >
+              <Image
+                src="/LogoBlack.webp"
+                alt="Building Beyond 2032"
+                width={260}
+                height={100}
+                className={styles.footerLogo}
+              />
+            </Link>
+
             <Image
-              src="/LogoBlack.webp"
-              alt="Building Beyond 2032"
-              width={260}
-              height={100}
-              className={styles.footerLogo}
+              src="/CFMEU_Logo_Black_Clear.png"
+              alt="Additional partner logo"
+              width={220}
+              height={90}
+              className={styles.additionalFooterLogo}
             />
-          </Link>
+          </div>
         </div>
 
         <nav className={styles.footerNav} aria-label="Footer navigation">
@@ -36,7 +50,11 @@ export default function Footer() {
 
           <div className={styles.footerLinks}>
             {footerLinks.map((link) => (
-              <Link key={link.label} href={link.href} className={styles.footerLink}>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={styles.footerLink}
+              >
                 {link.label}
               </Link>
             ))}
@@ -53,7 +71,10 @@ export default function Footer() {
       </div>
 
       <div className={styles.footerBottom}>
-        <p>© {new Date().getFullYear()} Building Beyond 2032. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} Building Beyond 2032. All rights
+          reserved.
+        </p>
       </div>
     </footer>
   );

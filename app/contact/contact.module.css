@@ -20,6 +20,7 @@
 }
 
 .contactTitle {
+  position: relative;
   display: inline-block;
   margin: 0 0 clamp(28px, 4vw, 44px);
 
@@ -33,6 +34,35 @@
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  animation: contactTitleReveal 0.9s ease-out 0.15s both;
+}
+
+.contactTitle::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -80%;
+
+  width: 45%;
+  height: 180%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+  animation: contactTitleShine 1.1s ease-out 0.8s forwards;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .contactText {
@@ -59,22 +89,16 @@
   color: #000;
 }
 
-.contactActions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 26px;
-  margin-top: clamp(32px, 5vw, 58px);
-}
-
-.contactButton {
+.emailButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   min-width: 280px;
+  margin-top: clamp(32px, 5vw, 58px);
   padding: 17px 26px;
 
+  border: 0;
   background: #c6ea2f;
   color: #000;
 
@@ -92,10 +116,36 @@
     color 0.2s ease;
 }
 
-.contactButton:hover {
+.emailButton:hover {
   transform: translateY(-2px);
   background: #000;
   color: #c6ea2f;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes contactTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes contactTitleShine {
+  from {
+    left: -80%;
+  }
+
+  to {
+    left: 130%;
+  }
 }
 
 /* Tablet */
@@ -110,10 +160,6 @@
 
   .contactText {
     max-width: 100%;
-  }
-
-  .contactActions {
-    flex-wrap: wrap;
   }
 }
 
@@ -134,15 +180,16 @@
     margin-bottom: 20px;
   }
 
-  .contactActions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-  }
+  .emailButton {
+  width: 100%;
+  min-width: 0;
+  padding: 16px 18px;
+}
+}
 
-  .contactButton {
-    width: 100%;
-    min-width: 0;
-    padding: 16px 18px;
+@media (prefers-reduced-motion: reduce) {
+  .contactTitle,
+  .contactTitle::before {
+    animation: none;
   }
 }

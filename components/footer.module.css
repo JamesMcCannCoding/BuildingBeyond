@@ -3,7 +3,7 @@
   background: #c6ea2f;
   color: #000;
 
-  padding: clamp(42px, 6vw, 78px) clamp(20px, 5vw, 78px) 26px;
+  padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 64px) 18px;
   scroll-snap-align: end;
 }
 
@@ -14,49 +14,91 @@
 
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
+  gap: clamp(24px, 4vw, 56px);
   align-items: start;
 }
 
 .footerBrand h2,
 .footerNav h3,
 .footerCta h3 {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   color: #000;
+
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 900;
 }
 
 .footerBrand h2 {
-  font-size: clamp(1.45rem, 2vw, 2.2rem);
+  font-size: clamp(1.35rem, 2vw, 2rem);
 }
 
 .footerNav h3,
 .footerCta h3 {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .footerBrand p {
-  max-width: 430px;
+  max-width: 390px;
   margin: 0;
+
   color: rgba(0, 0, 0, 0.78);
-  font-size: clamp(0.95rem, 1vw, 1.05rem);
+
+  font-size: clamp(0.9rem, 1vw, 1rem);
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.35;
 }
+
+/* =========================================================
+   FOOTER LOGOS
+   ========================================================= */
+
+.footerLogoStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.footerLogoLink {
+  display: inline-flex;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.footerLogo {
+  width: clamp(150px, 15vw, 220px);
+  height: auto;
+  display: block;
+}
+
+.additionalFooterLogo {
+  width: clamp(130px, 14vw, 190px);
+  height: auto;
+  max-height: 95px;
+  display: block;
+  object-fit: contain;
+}
+
+/* =========================================================
+   FOOTER NAVIGATION
+   ========================================================= */
 
 .footerLinks {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .footerLink {
   width: fit-content;
+
   color: #000;
   text-decoration: none;
-  font-size: 0.95rem;
+
+  font-size: 0.9rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -71,24 +113,30 @@
   transform: translateX(4px);
 }
 
+/* =========================================================
+   FOOTER CTA
+   ========================================================= */
+
 .footerButton {
+  position: relative;
+  overflow: hidden;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-width: 160px;
-  padding: 14px 24px;
+  min-width: 150px;
+  padding: 12px 22px;
 
+  border: 2px solid #000;
   background: #000;
   color: #c6ea2f;
+
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  font-size: 0.9rem;
   font-weight: 900;
-
-  border: 2px solid #000;
-  overflow: hidden;
-  position: relative;
 
   transition:
     background 0.2s ease,
@@ -102,38 +150,33 @@
   transform: translateY(-2px);
 }
 
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
 .footerBottom {
   max-width: 1400px;
-  margin: clamp(36px, 5vw, 64px) auto 0;
-  padding-top: 22px;
+  margin: clamp(26px, 4vw, 42px) auto 0;
+  padding-top: 16px;
+
   border-top: 2px solid rgba(0, 0, 0, 0.22);
 }
 
 .footerBottom p {
   margin: 0;
+
   color: rgba(0, 0, 0, 0.72);
-  font-size: 0.78rem;
+
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-}
-
-.footerLogoLink {
-  display: inline-flex;
-  width: fit-content;
-  margin-top: clamp(28px, 4vw, 52px);
-  text-decoration: none;
-}
-
-.footerLogo {
-  width: clamp(160px, 18vw, 260px);
-  height: auto;
-  display: block;
 }
 
 /* Tablet */
 @media (max-width: 900px) {
   .footerInner {
     grid-template-columns: 1fr 1fr;
+    gap: 30px;
   }
 
   .footerBrand {
@@ -144,16 +187,39 @@
 /* Mobile */
 @media (max-width: 560px) {
   .footer {
-    padding: 42px 20px 24px;
+    padding: 32px 20px 20px;
   }
 
   .footerInner {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 26px;
+  }
+
+  .footerBrand {
+    text-align: center;
+  }
+
+  .footerBrand p {
+    margin: 0 auto;
+  }
+
+  .footerLogoStack {
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .footerLogo {
+    width: 175px;
+  }
+
+  .additionalFooterLogo {
+    width: min(58vw, 175px);
+    max-height: 85px;
   }
 
   .footerLinks {
-    gap: 14px;
+    gap: 10px;
   }
 
   .footerButton {
@@ -161,14 +227,11 @@
   }
 
   .footerBottom {
-    margin-top: 38px;
-  }
-
-  .footerLogo {
-    width: 190px;
-  }
-
-  .footerLogoLink {
     margin-top: 28px;
+    padding-top: 14px;
+  }
+
+  .footerBottom p {
+    text-align: center;
   }
 }
