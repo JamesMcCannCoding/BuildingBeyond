@@ -159,14 +159,18 @@
   height: 100%;
 
   opacity: 0;
-  transform: translateY(28px) scale(0.98);
+  transform: scale(1.08);
+  transform-origin: center center;
+
+  will-change: opacity, transform;
+}
+
+.carouselRevealVisible {
+  animation: carouselReveal 1s ease-out 0.15s forwards;
 }
 
 /* =========================================================
    HERO 3 — WHY SECTION
-
-   EASY SIZE CONTROL:
-   --hero-image-width
    ========================================================= */
 
 .thirdHeroSection {
@@ -408,12 +412,12 @@
 @keyframes carouselReveal {
   from {
     opacity: 0;
-    transform: translateY(28px) scale(0.98);
+    transform: scale(1.08);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: scale(1);
   }
 }
 
