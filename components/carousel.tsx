@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "./carousel.module.css";
 
+const AUTO_ADVANCE_MS = 5000;
+
 const carouselImages = [
   {
     desktopSrc: "/BB_Web_C_1.webp",
@@ -28,23 +30,48 @@ const carouselImages = [
 
 export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [timerResetKey, setTimerResetKey] = useState(0);
 
-  const goToPrevious = useCallback(() => {
+  const resetAutoTimer = useCallback(() => {
+    setTimerResetKey((current) => current + 1);
+  }, []);
+
+  const showPreviousSlide = useCallback(() => {
     setCurrentIndex((current) =>
       current === 0 ? carouselImages.length - 1 : current - 1
     );
   }, []);
 
-  const goToNext = useCallback(() => {
+  const showNextSlide = useCallback(() => {
     setCurrentIndex((current) =>
       current === carouselImages.length - 1 ? 0 : current + 1
     );
   }, []);
 
+  const handlePreviousClick = () => {
+    showPreviousSlide();
+    resetAutoTimer();
+  };
+
+  const handleNextClick = () => {
+    showNextSlide();
+    resetAutoTimer();
+  };
+
+  const handleDotClick = (index: number) => {
+    setCurrentIndex(index);
+    resetAutoTimer();
+  };
+
   useEffect(() => {
-    const interval = window.setInterval(goToNext, 5000);
-    return () => window.clearInterval(interval);
-  }, [goToNext]);
+    const timeout = window.setTimeout(() => {
+      showNextSlide();
+    }, AUTO_ADVANCE_MS);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [currentIndex, timerResetKey, showNextSlide]);
 
   return (
     <div className={styles.carouselWrapper}>
@@ -75,7 +102,7 @@ export default function Carousel() {
         <button
           type="button"
           className={styles.carouselArrow}
-          onClick={goToPrevious}
+          onClick={handlePreviousClick}
           aria-label="Previous carousel image"
         >
           ‹
@@ -89,7 +116,7 @@ export default function Carousel() {
               className={`${styles.carouselDot} ${
                 index === currentIndex ? styles.carouselDotActive : ""
               }`}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => handleDotClick(index)}
               aria-label={`Go to carousel image ${index + 1}`}
             />
           ))}
@@ -98,7 +125,7 @@ export default function Carousel() {
         <button
           type="button"
           className={styles.carouselArrow}
-          onClick={goToNext}
+          onClick={handleNextClick}
           aria-label="Next carousel image"
         >
           ›
