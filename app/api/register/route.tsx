@@ -9,20 +9,21 @@ type RegisterPayload = {
   email?: string;
   currentOccupation?: string;
   company?: string;
+  suburb?: string;
   postCode?: string;
   cfmeuMember?: string;
   seekingConstructionWork?: string;
 };
 
-const STANDARD_REGISTER_TAG = "buildingbeyond2032";
-const WORKER_REGISTER_TAG = "buildingbeyond2032-worker-registration";
+const MAILCHIMP_TAG = "buildingbeyond2032";
 
 const MERGE_TAGS = {
   firstName: "FNAME",
   lastName: "LNAME",
   phone: "PHONE",
-  currentOccupation: "OCCUP",
   company: "COMPANY",
+  suburb: "SUBURB",
+  currentOccupation: "OCCUP",
   postCode: "POSTCODE",
   cfmeuMember: "CFMEU",
   seekingConstructionWork: "MMERGE11",
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
 
     const currentOccupation = body.currentOccupation?.trim();
     const company = body.company?.trim() || "";
+    const suburb = body.suburb?.trim() || "";
     const postCode = body.postCode?.trim();
     const cfmeuMember = body.cfmeuMember?.trim();
     const seekingConstructionWork = body.seekingConstructionWork?.trim();
@@ -126,6 +128,7 @@ export async function POST(request: Request) {
     if (isWorkerRegistration) {
       mergeFields[MERGE_TAGS.currentOccupation] = currentOccupation || "";
       mergeFields[MERGE_TAGS.company] = company;
+      mergeFields[MERGE_TAGS.suburb] = suburb;
       mergeFields[MERGE_TAGS.postCode] = postCode || "";
       mergeFields[MERGE_TAGS.cfmeuMember] = cfmeuMember || "";
       mergeFields[MERGE_TAGS.seekingConstructionWork] =
@@ -164,34 +167,6 @@ export async function POST(request: Request) {
 
     const tagUrl = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}/tags`;
 
-    const tagsToApply = [
-      {
-        name: STANDARD_REGISTER_TAG,
-        status: "active",
-      },
-    ];
-
-    if (isWorkerRegistration) {
-      tagsToApply.push({
-        name: WORKER_REGISTER_TAG,
-        status: "active",
-      });
-    }
-
-    if (cfmeuMember === "Yes") {
-      tagsToApply.push({
-        name: "Current CFMEU Member",
-        status: "active",
-      });
-    }
-
-    if (seekingConstructionWork === "Yes") {
-      tagsToApply.push({
-        name: "Seeking Construction Work",
-        status: "active",
-      });
-    }
-
     const tagResponse = await fetch(tagUrl, {
       method: "POST",
       headers: {
@@ -199,7 +174,12 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        tags: tagsToApply,
+        tags: [
+          {
+            name: MAILCHIMP_TAG,
+            status: "active",
+          },
+        ],
       }),
     });
 
