@@ -1,0 +1,486 @@
+.formPanel {
+  width: min(100%, 760px);
+  margin: clamp(18px, 3vw, 34px) auto;
+  padding: clamp(22px, 3vw, 34px);
+
+  background: #000;
+  color: #fff;
+
+  border: 2px solid rgba(198, 234, 47, 0.7);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(198, 234, 47, 0.12);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.formPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top left, rgba(198, 234, 47, 0.12), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(198, 234, 47, 0.08), transparent 34%);
+
+  pointer-events: none;
+}
+
+.formHeader,
+.form,
+.successMessage {
+  position: relative;
+  z-index: 1;
+}
+
+.formHeader {
+  margin: 0 0 22px;
+  text-align: center;
+}
+
+.formHeader h2 {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 14px;
+
+  background: #c6ea2f;
+  color: #000;
+
+  padding: 8px 16px 10px;
+
+  font-size: clamp(1.9rem, 4vw, 3.25rem);
+  line-height: 0.9;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  animation: formTitleReveal 0.9s ease-out 0.15s both;
+}
+
+.formHeader h2::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -80%;
+
+  width: 45%;
+  height: 180%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 65%,
+    transparent 100%
+  );
+
+  transform: skewX(-18deg);
+  animation: formTitleShine 1.1s ease-out 0.85s forwards;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.formHeader p {
+  max-width: 600px;
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.form {
+  width: 100%;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 18px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  text-align: left;
+}
+
+.formField span {
+  color: #c6ea2f;
+
+  font-size: 0.72rem;
+  line-height: 1.2;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.formField input {
+  width: 100%;
+  min-height: 44px;
+
+  border: 2px solid rgba(198, 234, 47, 0.95);
+  background: #fff;
+  color: #000;
+
+  padding: 8px 12px;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.formField input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(198, 234, 47, 0.42);
+  transform: translateY(-1px);
+}
+
+.formField input::placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+
+/* =========================================================
+   RADIO BUTTON FIELDS
+   ========================================================= */
+
+.radioField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  text-align: left;
+}
+
+.radioField legend {
+  min-height: 28px;
+
+  color: #c6ea2f;
+
+  font-size: 0.72rem;
+  line-height: 1.2;
+  font-weight: 950;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.radioOptions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.radioOption {
+  min-height: 44px;
+  padding: 8px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  border: 2px solid rgba(198, 234, 47, 0.95);
+  background: #fff;
+  color: #000;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.radioOption:hover {
+  transform: translateY(-1px);
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(198, 234, 47, 0.28);
+}
+
+.radioOption input {
+  appearance: none;
+
+  width: 16px;
+  height: 16px;
+  margin: 0;
+
+  display: grid;
+  place-content: center;
+
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.radioOption input::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  background: #000;
+
+  transform: scale(0);
+  transition: transform 0.18s ease;
+}
+
+.radioOption input:checked::before {
+  transform: scale(1);
+}
+
+.radioOption span {
+  color: #000;
+
+  font-size: 0.86rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.radioOption:has(input:checked) {
+  background: #c6ea2f;
+  border-color: #c6ea2f;
+}
+
+.submitButton {
+  width: 100%;
+  min-height: 50px;
+  margin: 22px 0 0;
+
+  border: 2px solid #c6ea2f;
+  background: #c6ea2f;
+  color: #000;
+
+  font-size: 0.9rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.successMessage {
+  text-align: center;
+}
+
+.successMessage h2 {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 16px;
+
+  background: #c6ea2f;
+  color: #000;
+
+  padding: 8px 16px 10px;
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.95;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.successMessage p {
+  max-width: 620px;
+  margin: 0 auto 12px;
+
+  color: rgba(255, 255, 255, 0.84);
+
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes formTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes formTitleShine {
+  from {
+    left: -80%;
+  }
+
+  to {
+    left: 130%;
+  }
+}
+
+/* Short desktop/laptop screens */
+@media (min-width: 901px) and (max-height: 850px) {
+  .formPanel {
+    width: min(100%, 720px);
+    margin: 14px auto;
+    padding: 20px 28px;
+  }
+
+  .formHeader {
+    margin-bottom: 18px;
+  }
+
+  .formHeader h2 {
+    font-size: clamp(1.7rem, 3vw, 2.75rem);
+    margin-bottom: 10px;
+  }
+
+  .formHeader p {
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .formGrid {
+    gap: 12px 16px;
+  }
+
+  .formField {
+    gap: 6px;
+  }
+
+  .formField input {
+    min-height: 40px;
+    padding: 7px 10px;
+  }
+
+  .radioOption {
+    min-height: 40px;
+    padding: 7px 10px;
+  }
+
+  .submitButton {
+    min-height: 46px;
+    margin-top: 18px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .formPanel {
+    width: calc(100% - 40px);
+    margin: 30px auto;
+    padding: 30px 24px;
+  }
+
+  .formGrid {
+    gap: 20px 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .formPanel {
+    width: calc(100% - 32px);
+    margin: 26px auto;
+    padding: 28px 20px;
+  }
+
+  .formHeader {
+    margin-bottom: 28px;
+  }
+
+  .formHeader h2 {
+    font-size: 2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .formHeader p {
+    font-size: 0.95rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .formField span,
+  .radioField legend {
+    min-height: auto;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+  }
+
+  .formField input {
+    min-height: 52px;
+    font-size: 0.98rem;
+  }
+
+  .radioOptions {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .radioOption {
+    min-height: 52px;
+    padding: 12px 14px;
+  }
+
+  .radioOption span {
+    font-size: 0.9rem;
+  }
+
+  .submitButton {
+    min-height: 58px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formHeader h2,
+  .formHeader h2::before,
+  .formField input,
+  .radioOption,
+  .submitButton {
+    animation: none;
+    transition: none;
+  }
+}

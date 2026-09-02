@@ -17,22 +17,38 @@ export default function DisableScrollSnap() {
     html.style.scrollBehavior = "auto";
     window.history.scrollRestoration = "manual";
 
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "auto",
-    });
-
-    const timeout = window.setTimeout(() => {
+    const scrollToTop = () => {
       window.scrollTo({
         top: 0,
         left: 0,
         behavior: "auto",
       });
-    }, 0);
+
+      html.scrollTop = 0;
+      body.scrollTop = 0;
+    };
+
+    scrollToTop();
+
+    const animationFrameOne = window.requestAnimationFrame(scrollToTop);
+
+    const animationFrameTwo = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(scrollToTop);
+    });
+
+    const timeoutOne = window.setTimeout(scrollToTop, 50);
+    const timeoutTwo = window.setTimeout(scrollToTop, 150);
+    const timeoutThree = window.setTimeout(scrollToTop, 350);
+    const timeoutFour = window.setTimeout(scrollToTop, 700);
 
     return () => {
-      window.clearTimeout(timeout);
+      window.cancelAnimationFrame(animationFrameOne);
+      window.cancelAnimationFrame(animationFrameTwo);
+
+      window.clearTimeout(timeoutOne);
+      window.clearTimeout(timeoutTwo);
+      window.clearTimeout(timeoutThree);
+      window.clearTimeout(timeoutFour);
 
       html.style.scrollSnapType = previousHtmlSnap;
       body.style.scrollSnapType = previousBodySnap;

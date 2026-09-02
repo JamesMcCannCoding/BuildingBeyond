@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import crypto from "crypto";
+import { createHash } from "crypto";
 
-type RegisterPayload = {
+type WorkerRegistrationPayload = {
   firstName?: string;
   lastName?: string;
-  mobile?: string;
   phone?: string;
   email?: string;
   currentOccupation?: string;
@@ -14,8 +13,7 @@ type RegisterPayload = {
   seekingConstructionWork?: string;
 };
 
-const STANDARD_REGISTER_TAG = "buildingbeyond2032";
-const WORKER_REGISTER_TAG = "buildingbeyond2032-worker-registration";
+const MAILCHIMP_TAG = "buildingbeyond2032-worker-registration";
 
 const MERGE_TAGS = {
   firstName: "FNAME",
@@ -25,72 +23,57 @@ const MERGE_TAGS = {
   company: "COMPANY",
   postCode: "POSTCODE",
   cfmeuMember: "CFMEU",
-  seekingConstructionWork: "MMERGE11",
+  seekingConstructionWork: "SEEKWORK",
 };
+
+export async function GET() {
+  return NextResponse.json(
+    { message: "Worker registration API route is working." },
+    { status: 200 }
+  );
+}
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as RegisterPayload;
+    const body = (await request.json()) as WorkerRegistrationPayload;
 
     const firstName = body.firstName?.trim();
     const lastName = body.lastName?.trim();
-    const phone = body.phone?.trim() || body.mobile?.trim();
+    const phone = body.phone?.trim();
     const email = body.email?.trim().toLowerCase();
-
     const currentOccupation = body.currentOccupation?.trim();
     const company = body.company?.trim() || "";
     const postCode = body.postCode?.trim();
     const cfmeuMember = body.cfmeuMember?.trim();
     const seekingConstructionWork = body.seekingConstructionWork?.trim();
 
-    const isWorkerRegistration =
-      Boolean(currentOccupation) ||
-      Boolean(postCode) ||
-      Boolean(cfmeuMember) ||
-      Boolean(seekingConstructionWork);
-
-    if (!firstName || !lastName || !phone || !email) {
+    if (
+      !firstName ||
+      !lastName ||
+      !phone ||
+      !email ||
+      !currentOccupation ||
+      !postCode ||
+      !cfmeuMember ||
+      !seekingConstructionWork
+    ) {
       return NextResponse.json(
         {
           message:
-            "First name, last name, phone number, and email are required.",
+            "First name, last name, phone, email, current occupation, post code, CFMEU member status, and seeking work status are required.",
         },
         { status: 400 }
       );
     }
 
-    if (
-      isWorkerRegistration &&
-      (!currentOccupation ||
-        !postCode ||
-        !cfmeuMember ||
-        !seekingConstructionWork)
-    ) {
-      return NextResponse.json(
-        {
-          message:
-            "Current occupation, post code, CFMEU member status, and seeking work status are required.",
-        },
-        { status: 400 }
-      );
-    }
-
-    if (
-      isWorkerRegistration &&
-      cfmeuMember &&
-      !["Yes", "No"].includes(cfmeuMember)
-    ) {
+    if (!["Yes", "No"].includes(cfmeuMember)) {
       return NextResponse.json(
         { message: "CFMEU member status must be Yes or No." },
         { status: 400 }
       );
     }
 
-    if (
-      isWorkerRegistration &&
-      seekingConstructionWork &&
-      !["Yes", "No"].includes(seekingConstructionWork)
-    ) {
+    if (!["Yes", "No"].includes(seekingConstructionWork)) {
       return NextResponse.json(
         { message: "Seeking work status must be Yes or No." },
         { status: 400 }
@@ -108,29 +91,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const subscriberHash = crypto
-      .createHash("md5")
-      .update(email)
-      .digest("hex");
+    const subscriberHash = createHash("md5").update(email).digest("hex");
 
     const authHeader = `Basic ${Buffer.from(`anystring:${apiKey}`).toString(
       "base64"
     )}`;
-
-    const mergeFields: Record<string, string> = {
-      [MERGE_TAGS.firstName]: firstName,
-      [MERGE_TAGS.lastName]: lastName,
-      [MERGE_TAGS.phone]: phone,
-    };
-
-    if (isWorkerRegistration) {
-      mergeFields[MERGE_TAGS.currentOccupation] = currentOccupation || "";
-      mergeFields[MERGE_TAGS.company] = company;
-      mergeFields[MERGE_TAGS.postCode] = postCode || "";
-      mergeFields[MERGE_TAGS.cfmeuMember] = cfmeuMember || "";
-      mergeFields[MERGE_TAGS.seekingConstructionWork] =
-        seekingConstructionWork || "";
-    }
 
     const memberUrl = `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}`;
 
@@ -143,14 +108,23 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         email_address: email,
         status_if_new: "subscribed",
-        merge_fields: mergeFields,
+        merge_fields: {
+          [MERGE_TAGS.firstName]: firstName,
+          [MERGE_TAGS.lastName]: lastName,
+          [MERGE_TAGS.phone]: phone,
+          [MERGE_TAGS.currentOccupation]: currentOccupation,
+          [MERGE_TAGS.company]: company,
+          [MERGE_TAGS.postCode]: postCode,
+          [MERGE_TAGS.cfmeuMember]: cfmeuMember,
+          [MERGE_TAGS.seekingConstructionWork]: seekingConstructionWork,
+        },
       }),
     });
 
     const memberData = await memberResponse.json();
 
     if (!memberResponse.ok) {
-      console.error("Mailchimp member error:", memberData);
+      console.error("Mailchimp worker registration member error:", memberData);
 
       return NextResponse.json(
         {
@@ -166,17 +140,10 @@ export async function POST(request: Request) {
 
     const tagsToApply = [
       {
-        name: STANDARD_REGISTER_TAG,
+        name: MAILCHIMP_TAG,
         status: "active",
       },
     ];
-
-    if (isWorkerRegistration) {
-      tagsToApply.push({
-        name: WORKER_REGISTER_TAG,
-        status: "active",
-      });
-    }
 
     if (cfmeuMember === "Yes") {
       tagsToApply.push({
@@ -206,28 +173,24 @@ export async function POST(request: Request) {
     if (!tagResponse.ok) {
       const tagData = await tagResponse.json();
 
-      console.error("Mailchimp tag error:", tagData);
+      console.error("Mailchimp worker registration tag error:", tagData);
 
       return NextResponse.json(
         {
           message:
             tagData.detail ||
-            "The contact was added, but the Mailchimp tag could not be applied.",
+            "The contact was added, but the Mailchimp tags could not be applied.",
         },
         { status: tagResponse.status }
       );
     }
 
     return NextResponse.json(
-      {
-        message: isWorkerRegistration
-          ? "Worker registration submitted successfully."
-          : "Successfully registered interest.",
-      },
+      { message: "Worker registration submitted successfully." },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Register interest error:", error);
+    console.error("Worker registration error:", error);
 
     return NextResponse.json(
       { message: "Unexpected server error." },

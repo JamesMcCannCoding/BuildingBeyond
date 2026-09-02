@@ -1,0 +1,32 @@
+.workerRegistrationPage {
+  width: 100%;
+  min-height: var(--section-height);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: clamp(14px, 2vw, 26px) clamp(20px, 5vw, 72px) 42px;
+
+  background-color: #000;
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("/BB_Web_Dark_BG.webp");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  scroll-snap-align: none;
+}
+
+@media (max-width: 640px) {
+  .workerRegistrationPage {
+    align-items: flex-start;
+    padding: 22px 0 46px;
+    background-position: center top;
+  }
+}
