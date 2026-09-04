@@ -72,19 +72,6 @@
   margin-bottom: 30px;
 }
 
-.inlineRegisterPanel .successMessage h2 {
-  margin: 0 0 14px;
-
-  color: #c6ea2f;
-
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  line-height: 0.95;
-  font-weight: 950;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-
 .modalHeader h4,
 .successMessage h4 {
   margin: 0 0 14px;
@@ -345,12 +332,12 @@
 }
 
 .inlineRegisterPanel .successMessage h2 {
-  margin: 0 0 18px;
+  margin: 0 0 12px;
 
   color: #c6ea2f;
 
-  font-size: clamp(2.6rem, 6vw, 5.2rem);
-  line-height: 0.9;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  line-height: 1;
   font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -358,15 +345,19 @@
 
 .inlineRegisterPanel .successMessage p {
   width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
+  max-width: 560px;
+  margin: 0 auto 10px;
 
   color: rgba(255, 255, 255, 0.9);
 
   text-align: center;
-  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
   line-height: 1.45;
-  font-weight: 800;
+  font-weight: 700;
+}
+
+.inlineRegisterPanel .successMessage p:last-of-type {
+  margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
