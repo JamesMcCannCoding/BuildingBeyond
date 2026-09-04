@@ -72,18 +72,19 @@
   margin-bottom: 30px;
 }
 
-.modalHeader h2,
-.successMessage h2 {
+.inlineRegisterPanel .successMessage h2 {
   margin: 0 0 14px;
 
   color: #c6ea2f;
 
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 1;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 0.95;
   font-weight: 950;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
+
+
 .modalHeader h4,
 .successMessage h4 {
   margin: 0 0 14px;

@@ -178,10 +178,17 @@ export default function RegisterInterestModal({
     </>
   ) : (
     <div className={styles.successMessage}>
-      <h4>Thank you</h4>
+      <h2>Thank you</h2>
+
       <p>
-        You will recieve a follow up email from Bulding Beyond 2032. 
-        <br>If you can't see our email in your inbox, please check your spam, junk or promotional folders.</br>
+        Your interest has been recorded. We will be in touch with more information
+        soon.
+      </p>
+
+      <p>
+        You will receive a follow-up email from Building Beyond 2032. If you
+        can&apos;t see our email in your inbox, please check your spam, junk, or
+        promotional folders.
       </p>
 
       {variant === "modal" && (
