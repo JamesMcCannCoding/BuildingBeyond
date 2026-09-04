@@ -84,6 +84,18 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+.modalHeader h4,
+.successMessage h4 {
+  margin: 0 0 14px;
+
+  color: #c6ea2f;
+
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
 .modalHeader p,
 .successMessage p {
