@@ -18,7 +18,8 @@
   align-items: flex-start;
   justify-content: center;
 
-  padding: clamp(8px, 1.4vw, 22px) clamp(22px, 5vw, 72px) clamp(32px, 4vw, 56px);
+  padding: clamp(8px, 1.4vw, 22px) clamp(22px, 5vw, 72px)
+    clamp(32px, 4vw, 56px);
 
   scroll-snap-align: none;
 }
@@ -90,6 +91,11 @@
   margin-top: 0;
 }
 
+/* =========================================================
+   PROMO SECTION
+   Desktop: background image + overlay image
+   Mobile: single full-bleed mobile image
+   ========================================================= */
 
 .findWorkPromoSection {
   position: relative;
@@ -103,6 +109,7 @@
   background-repeat: no-repeat;
 
   overflow: hidden;
+  scroll-snap-align: none;
 }
 
 .findWorkPromoOverlay {
@@ -110,7 +117,7 @@
   top: 50%;
   left: 35%;
 
-  width: min(40vw, 840px);
+  width: min(38vw, 700px);
 
   display: flex;
   align-items: center;
@@ -121,7 +128,7 @@
 
 .findWorkPromoTextImage {
   width: 100%;
-  max-width: 1080px;
+  max-width: 700px;
   height: auto;
   display: block;
 
@@ -130,17 +137,15 @@
   animation: promoReveal 0.8s ease-out forwards;
 }
 
-@keyframes promoReveal {
-  from {
-    opacity: 0;
-    transform: scale(1.08);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.findWorkPromoMobileImage {
+  display: none;
+  width: 100%;
+  height: auto;
 }
+
+/* =========================================================
+   FULL WIDTH IMAGE SECTION
+   ========================================================= */
 
 .findWorkFullImageSection {
   width: 100%;
@@ -158,6 +163,12 @@
   height: auto;
   display: block;
 }
+
+/* =========================================================
+   LARGE OVERLAY SECTION
+   Desktop: background image + large overlay image
+   Mobile: single full-bleed mobile image
+   ========================================================= */
 
 .findWorkLargeOverlaySection {
   position: relative;
@@ -208,6 +219,28 @@
     drop-shadow(0 24px 64px rgba(0, 0, 0, 0.85));
 }
 
+.findWorkLargeOverlayMobileImage {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes promoReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes largeOverlayReveal {
   from {
     opacity: 0;
@@ -220,45 +253,12 @@
   }
 }
 
-/* Tablet */
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media (max-width: 900px) {
   .findWorkPage {
-    padding: 24px 20px 52px;
-  }
-
-  .findWorkContent {
-    max-width: 100%;
-  }
-
-  .findWorkHeadingImage {
-    width: min(94vw, 760px);
-  }
-
-  .findWorkHero {
-    margin-bottom: 14px;
-  }
-
-  .findWorkPromoSection {
-    min-height: 420px;
-    padding: 28px 24px;
-    background-position: left center;
-  }
-
-  .findWorkPromoOverlay {
-    width: min(48%, 420px);
-  }
-
-  .findWorkLargeOverlaySection {
-    min-height: 620px;
-    padding: 32px 22px;
-  }
-
-  .findWorkLargeOverlayImage {
-    width: min(96vw, 900px);
-    max-height: 560px;
-  }
-
-    .findWorkPage {
     padding: 24px 20px 52px;
   }
 
@@ -273,54 +273,35 @@
   .findWorkHero {
     margin-bottom: 18px;
   }
-}
-
-/* Mobile */
-@media (max-width: 560px) {
-  .findWorkPage {
-    padding: 22px 16px 46px;
-    background-position: center top;
-  }
-
-  .findWorkHeadingImage {
-    width: 100%;
-  }
-
-  .findWorkHero {
-    margin-bottom: 12px;
-  }
 
   .findWorkPromoSection {
-    min-height: 360px;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 20px 18px 26px;
+    min-height: 420px;
     background-position: left center;
   }
 
   .findWorkPromoOverlay {
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
-  }
-
-  .findWorkPromoTextImage {
-    max-width: 100%;
+    left: 36%;
+    width: min(48vw, 460px);
   }
 
   .findWorkLargeOverlaySection {
-    min-height: 520px;
-    padding: 26px 16px;
-
-    background-position: center top;
+    min-height: 620px;
+    padding: 32px 22px;
   }
 
   .findWorkLargeOverlayImage {
-    width: 100%;
-    max-height: 470px;
+    width: min(96vw, 900px);
+    max-height: 560px;
   }
+}
 
-    .findWorkPage {
+/* =========================================================
+   MOBILE
+   Top form section
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .findWorkPage {
     padding: 22px 16px 46px;
     background-position: center top;
   }
@@ -334,7 +315,90 @@
   }
 }
 
+/* =========================================================
+   MOBILE FULL-BLEED IMAGE SECTIONS
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .findWorkPromoSection {
+    width: 100vw;
+    max-width: none;
+    min-height: auto;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding: 0 !important;
+
+    display: block;
+
+    background-image: none !important;
+    background-color: transparent !important;
+
+    overflow: hidden;
+  }
+
+  .findWorkPromoOverlay {
+    display: none !important;
+  }
+
+  .findWorkPromoMobileImage {
+    display: block;
+
+    width: 100vw;
+    max-width: none;
+    height: auto;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .findWorkLargeOverlaySection {
+    width: 100vw;
+    max-width: none;
+    min-height: auto;
+
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    padding: 0 !important;
+
+    display: block;
+
+    background-image: none !important;
+    background-color: transparent !important;
+
+    overflow: hidden;
+  }
+
+  .findWorkLargeOverlayWrap {
+    display: none !important;
+  }
+
+  .findWorkLargeOverlayMobileImage {
+    display: block;
+
+    width: 100vw;
+    max-width: none;
+    height: auto;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain;
+    object-position: center center;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
+  .findWorkPromoTextImage,
   .findWorkLargeOverlayImage {
     opacity: 1;
     transform: none;

@@ -42,16 +42,28 @@ export default function FindWorkPage() {
             className={styles.findWorkPromoTextImage}
           />
         </div>
+
+        <img
+          src="/BB_Mobile_FindWork_S1.webp"
+          alt="Ready to get to work?"
+          className={styles.findWorkPromoMobileImage}
+        />
       </section>
 
       <section className={styles.findWorkLargeOverlaySection}>
         <div className={styles.findWorkLargeOverlayWrap}>
           <img
             src="/BB_FindWork_Overlay1.webp"
-            alt="Building Beyond 2032 construction information"
+            alt="Building Beyond 2032 construction opportunities"
             className={styles.findWorkLargeOverlayImage}
           />
         </div>
+
+        <img
+          src="/BB_Mobile_FindWork_S2.webp"
+          alt="Building Beyond 2032 construction opportunities"
+          className={styles.findWorkLargeOverlayMobileImage}
+        />
       </section>
 
       <section className={styles.findWorkFullImageSection}>
