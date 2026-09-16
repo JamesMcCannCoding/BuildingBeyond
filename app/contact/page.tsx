@@ -37,34 +37,54 @@ export default function ContactPage() {
     <>
       <DisableScrollSnap />
 
-      <section className={styles.contactPage}>
-        <div className={styles.contactContent}>
-          <h1 className={styles.contactTitle}>Contact</h1>
+      <section className={styles.contactHeroSection}>
+        <div className={styles.contactHeroContent}>
+          <h1 className={styles.visuallyHidden}>Contact Building Beyond 2032</h1>
 
-          <div className={styles.contactText}>
-            <p>
-              Get in touch with Building Beyond 2032 to learn more about job
-              opportunities, apprenticeships, industry pathways, or how your
-              organisation can be involved.
-            </p>
+          <img
+            src="/BB_Web_Contact_Heading_Overlay.webp"
+            alt="Contact Us Now"
+            className={styles.contactHeadingImage}
+          />
 
-            <p>
-              Whether you are an existing construction worker, a future
-              apprentice, a contractor, employer, school, or community partner,
-              we would love to hear from you.
-            </p>
-
-            <p>
-              Building Beyond 2032 is focused on connecting Queenslanders with
-              real opportunities in the construction industry and helping build
-              a workforce that lasts well beyond the 2032 Games.
-            </p>
-          </div>
-
-          <a href={emailHref} className={styles.emailButton}>
-            Email Us
+          <a
+            href={emailHref}
+            className={styles.emailButton}
+            aria-label="Email Building Beyond 2032"
+          >
+            <img
+              src="/BB_Web_Contact_Email_Button.webp"
+              alt="Email Us"
+              className={styles.emailButtonImage}
+            />
           </a>
         </div>
+      </section>
+
+      <section className={styles.contactSectionOne}>
+        <div className={styles.contactSectionOneContent}>
+          <img
+            src="/BB_Web_Contact_Banner_Overlay.webp"
+            alt="Building Beyond 2032 contact information"
+            className={styles.contactSectionOneTextImage}
+          />
+        </div>
+      </section>
+
+      <section className={styles.contactSectionTwo}>
+        <div className={styles.contactSectionTwoContent}>
+          <img
+            src="/BB_Web_Contact_S2_Overlay.webp"
+            alt="Building Beyond 2032 contact information"
+            className={styles.contactSectionTwoTextImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Web_Contact_S2_Overlay.webp"
+          alt="Building Beyond 2032 contact information"
+          className={styles.contactSectionTwoMobileImage}
+        />
       </section>
     </>
   );
