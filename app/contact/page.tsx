@@ -81,7 +81,7 @@ export default function ContactPage() {
         </div>
 
         <img
-          src="/BB_Web_Contact_S2_Overlay.webp"
+          src="/BB_Mobile_Contact_S2.webp"
           alt="Building Beyond 2032 contact information"
           className={styles.contactSectionTwoMobileImage}
         />
