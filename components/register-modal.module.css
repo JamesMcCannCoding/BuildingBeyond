@@ -22,15 +22,14 @@
   position: relative;
   z-index: 2;
 
-  width: min(100%, 720px);
+  width: min(100%, 680px);
+  padding: clamp(26px, 4vw, 44px);
 
   background: #000;
   color: #fff;
 
   border: 2px solid #c6ea2f;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
-
-  padding: clamp(28px, 5vw, 52px);
 
   animation: modalReveal 0.28s ease-out forwards;
 }
@@ -43,6 +42,10 @@
   width: 38px;
   height: 38px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: 1px solid rgba(198, 234, 47, 0.55);
   background: transparent;
   color: #c6ea2f;
@@ -50,10 +53,6 @@
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   transition:
     background 0.2s ease,
@@ -68,17 +67,17 @@
 }
 
 .modalHeader {
+  margin-bottom: 26px;
   text-align: center;
-  margin-bottom: 30px;
 }
 
-.modalHeader h4,
-.successMessage h4 {
-  margin: 0 0 14px;
+.modalHeader h2,
+.successMessage h2 {
+  margin: 0 0 12px;
 
   color: #c6ea2f;
 
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   line-height: 1;
   font-weight: 950;
   text-transform: uppercase;
@@ -88,13 +87,17 @@
 .modalHeader p,
 .successMessage p {
   max-width: 540px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.86);
 
-  font-size: 1rem;
-  line-height: 1.55;
+  font-size: 0.95rem;
+  line-height: 1.45;
   font-weight: 600;
+}
+
+.successMessage p:last-of-type {
+  margin-bottom: 0;
 }
 
 .form {
@@ -104,19 +107,19 @@
 .formGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 16px;
 }
 
 .formField {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 .formField span {
   color: #c6ea2f;
 
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -129,9 +132,9 @@
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
 
-  padding: 15px 14px;
+  padding: 13px 14px;
 
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
 
   outline: none;
@@ -150,15 +153,15 @@
 
 .submitButton {
   width: 100%;
-  margin-top: 26px;
+  margin-top: 22px;
 
   border: 2px solid #c6ea2f;
   background: #c6ea2f;
   color: #000;
 
-  padding: 17px 24px;
+  padding: 15px 22px;
 
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -177,32 +180,26 @@
   transform: translateY(-2px);
 }
 
+.submitButton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .successMessage {
   text-align: center;
 }
 
-@keyframes modalReveal {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 /* =========================================================
    INLINE REGISTER FORM
-   Used on Find Work page
+   Used on Find Work and Learn More pages
    ========================================================= */
 
 .inlineRegisterPanel {
-  width: 100%;
-  max-width: 760px;
-  margin: clamp(42px, 6vw, 70px) auto 0;
-  padding: clamp(30px, 4vw, 48px);
+  width: clamp(560px, 40vw, 720px);
+  max-width: calc(100vw - 44px);
+  margin: 0 auto;
+  padding: clamp(22px, 2.4vw, 34px);
 
   background: #000;
   color: #fff;
@@ -211,19 +208,19 @@
 }
 
 .inlineRegisterPanel .modalHeader {
-  margin: 0 0 32px;
+  margin: 0 0 clamp(18px, 2vw, 26px);
   text-align: center;
 }
 
 .inlineRegisterPanel .modalHeader h2 {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
 
   color: #c6ea2f;
 
-  font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 0.95;
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  line-height: 0.9;
   font-weight: 950;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -231,10 +228,10 @@
   max-width: 560px;
   margin: 0 auto;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.88);
 
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: clamp(0.84rem, 0.95vw, 1rem);
+  line-height: 1.35;
   font-weight: 700;
 }
 
@@ -245,37 +242,39 @@
 
 .inlineRegisterPanel .formGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px) clamp(14px, 1.6vw, 22px);
 }
 
 .inlineRegisterPanel .formField {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
+
   text-align: left;
 }
 
 .inlineRegisterPanel .formField span {
   color: #c6ea2f;
 
-  font-size: 0.78rem;
+  font-size: clamp(0.62rem, 0.72vw, 0.74rem);
+  line-height: 1.2;
   font-weight: 950;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .inlineRegisterPanel .formField input {
   width: 100%;
-  min-height: 56px;
+  min-height: clamp(38px, 3vw, 48px);
 
   border: 2px solid #c6ea2f;
   background: #fff;
   color: #000;
 
-  padding: 12px 14px;
+  padding: 8px 11px;
 
-  font-size: 1rem;
+  font-size: clamp(0.84rem, 0.9vw, 0.95rem);
   font-weight: 700;
 
   outline: none;
@@ -283,19 +282,19 @@
 
 .inlineRegisterPanel .formField input:focus {
   border-color: #fff;
-  box-shadow: 0 0 0 3px rgba(198, 234, 47, 0.4);
+  box-shadow: 0 0 0 3px rgba(198, 234, 47, 0.35);
 }
 
 .inlineRegisterPanel .submitButton {
   width: 100%;
-  min-height: 62px;
-  margin: 30px 0 0;
+  min-height: clamp(42px, 3.4vw, 54px);
+  margin: clamp(16px, 2vw, 24px) 0 0;
 
   border: 0;
   background: #c6ea2f;
   color: #000;
 
-  font-size: 0.95rem;
+  font-size: clamp(0.78rem, 0.9vw, 0.95rem);
   font-weight: 950;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -332,11 +331,11 @@
 }
 
 .inlineRegisterPanel .successMessage h2 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 
   color: #c6ea2f;
 
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
   line-height: 1;
   font-weight: 950;
   letter-spacing: 0.08em;
@@ -346,13 +345,13 @@
 .inlineRegisterPanel .successMessage p {
   width: 100%;
   max-width: 560px;
-  margin: 0 auto 10px;
+  margin: 0 auto 8px;
 
   color: rgba(255, 255, 255, 0.9);
 
   text-align: center;
-  font-size: clamp(0.82rem, 1vw, 0.95rem);
-  line-height: 1.45;
+  font-size: clamp(0.78rem, 0.9vw, 0.92rem);
+  line-height: 1.4;
   font-weight: 700;
 }
 
@@ -360,22 +359,100 @@
   margin-bottom: 0;
 }
 
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes modalReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Short desktop / laptop screens */
+@media (min-width: 901px) and (max-height: 850px) {
+  .inlineRegisterPanel {
+    width: clamp(560px, 38vw, 680px);
+    padding: 18px 26px;
+  }
+
+  .inlineRegisterPanel .modalHeader {
+    margin-bottom: 16px;
+  }
+
+  .inlineRegisterPanel .modalHeader h2 {
+    font-size: clamp(2rem, 3.1vw, 3rem);
+    margin-bottom: 8px;
+  }
+
+  .inlineRegisterPanel .modalHeader p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .inlineRegisterPanel .formGrid {
+    gap: 10px 14px;
+  }
+
+  .inlineRegisterPanel .formField {
+    gap: 4px;
+  }
+
+  .inlineRegisterPanel .formField span {
+    font-size: 0.6rem;
+  }
+
+  .inlineRegisterPanel .formField input {
+    min-height: 36px;
+    padding: 6px 9px;
+    font-size: 0.82rem;
+  }
+
+  .inlineRegisterPanel .submitButton {
+    min-height: 42px;
+    margin-top: 14px;
+    font-size: 0.76rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
   .inlineRegisterPanel {
-    padding: 28px 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 26px 20px;
   }
 
   .inlineRegisterPanel .formGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
   }
 
   .inlineRegisterPanel .modalHeader h2 {
     font-size: 2rem;
     letter-spacing: 0.08em;
   }
+
+  .inlineRegisterPanel .modalHeader p {
+    font-size: 0.92rem;
+  }
+
+  .inlineRegisterPanel .formField input {
+    min-height: 52px;
+  }
+
+  .inlineRegisterPanel .submitButton {
+    min-height: 56px;
+  }
 }
 
+/* Modal mobile */
 @media (max-width: 620px) {
   .modalOverlay {
     padding: 16px;
@@ -392,6 +469,14 @@
   .modalHeader {
     margin-bottom: 24px;
   }
+}
 
-  
+@media (prefers-reduced-motion: reduce) {
+  .modalPanel,
+  .closeButton,
+  .formField input,
+  .submitButton {
+    animation: none;
+    transition: none;
+  }
 }

@@ -16,35 +16,50 @@ export default function FindWorkPage() {
 
       <section className={styles.findWorkPage}>
         <div className={styles.findWorkContent}>
-          <h1 className={styles.findWorkTitle}>Find Work</h1>
+          <h1 className={styles.visuallyHidden}>
+            Find Construction Work in Queensland
+          </h1>
 
-          <div className={styles.findWorkText}>
-            <p>
-              Register your interest in construction job opportunities connected
-              to Building Beyond 2032.
-            </p>
-
-            <p>
-              Whether you are already working in the industry or looking for
-              your next opportunity, Building Beyond 2032 is designed to help
-              connect Queensland workers with real construction jobs.
-            </p>
-
-            <p>
-              The demand for skilled workers will continue to grow as Queensland
-              prepares for the 2032 Games and the major pipeline of work beyond
-              it.
-            </p>
-
-            <p>
-              If you are ready to be part of this opportunity, register your
-              interest below and take the next step toward secure, meaningful
-              work in construction.
-            </p>
+          <div className={styles.findWorkHero}>
+            <img
+              src="/BB_FindWork_Heading.webp"
+              alt="Find Work"
+              className={styles.findWorkHeadingImage}
+            />
           </div>
 
-          <RegisterModal variant="inline" />
+          <div className={styles.findWorkFormWrap}>
+            <RegisterModal variant="inline" />
+          </div>
         </div>
+      </section>
+
+      <section className={styles.findWorkPromoSection}>
+        <div className={styles.findWorkPromoOverlay}>
+          <img
+            src="/BB_FindWork_Section1Text.webp"
+            alt="Ready to get to work?"
+            className={styles.findWorkPromoTextImage}
+          />
+        </div>
+      </section>
+
+      <section className={styles.findWorkLargeOverlaySection}>
+        <div className={styles.findWorkLargeOverlayWrap}>
+          <img
+            src="/BB_FindWork_Overlay1.webp"
+            alt="Building Beyond 2032 construction information"
+            className={styles.findWorkLargeOverlayImage}
+          />
+        </div>
+      </section>
+
+      <section className={styles.findWorkFullImageSection}>
+        <img
+          src="/BB_FindWork_Section2.webp"
+          alt="Building Beyond 2032 construction opportunities"
+          className={styles.findWorkFullImage}
+        />
       </section>
     </>
   );
