@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import DisableScrollSnap from "@/components/disable-scroll-snap";
 import styles from "./concept.module.css";
 
@@ -32,76 +31,125 @@ export default function ConceptPage() {
     <>
       <DisableScrollSnap />
 
-      <section className={styles.conceptPage}>
-        <div className={styles.conceptContent}>
-          <h1 className={styles.conceptTitle}>Concept</h1>
-
-          <div className={styles.conceptText}>
-            <p>
-              To deliver the 2032 Games, our state will need an additional
-              50,000 construction workers. The upcoming pipeline of work is a
-              once-in-a-generation opportunity to shape the future of our state
-              and secure a legacy that lasts long after the final medal is
-              awarded.
-            </p>
-
-            <p>
-              Building Beyond 2032 is a plan to ensure we use this opportunity
-              to train local, hire local, and build a local workforce that
-              serves Queensland&apos;s needs for years beyond the Olympic Games.
-            </p>
-
-            <p>
-              We&apos;re working with local builders, sub-contractors, existing
-              workers in the industry, apprentices and new entrants to ensure
-              Queenslanders benefit from Queensland jobs. Not just those who
-              perform the work, but generations of Queenslanders who rely on a
-              locally skilled workforce to build the infrastructure needed to
-              provide homes, hospitals, and schools.
-            </p>
-
-            <p>
-              If you&apos;re an existing worker in the construction industry{" "}
-              <Link href="/find-work">register here for job opportunities</Link>.
-            </p>
-
-            <p>
-              If you&apos;re considering a future in the construction industry{" "}
-              <Link href="/learn-more">
-                register here for apprenticeships and other opportunities for
-                new entrants
-              </Link>.
-            </p>
-
-            <p>
-              For the young people of Queensland considering their next step,
-              there has never been a better time to pick up a tool. The demand
-              for apprentices will be unprecedented. A trade apprenticeship
-              started today is a passport to a decade of secure work, leading
-              directly to the heart of the Olympic project.
-            </p>
-
-            <p>
-              Our vision as a union stretches beyond the next project deadline.
-              It is a vision not just for tomorrow, but for the next day and
-              every day after. We are connecting existing and future workers in
-              the industry with a future where a fair day&apos;s work earns a
-              fair day&apos;s pay, where safety is sacred, and where a career in
-              the trades is a source of dignity and pride for generations to
-              come.
-            </p>
-          </div>
-
-          <div className={styles.conceptActions}>
-            <Link href="/find-work" className={styles.conceptButton}>
-              I&apos;m looking for work
-            </Link>
-
-            <Link href="/learn-more" className={styles.conceptButton}>
-              I want to enter the industry
-            </Link>
-          </div>
+      {/* =====================================================
+          SECTION 1
+          Desktop: background + overlay
+          Mobile: single full-width mobile image
+          ===================================================== */}
+      <section className={styles.conceptSectionOne}>
+        <div className={styles.conceptSectionOneContent}>
+          <img
+            src="/BB_Web_Concept_S1_Overlay.webp"
+            alt="Building Beyond 2032 concept"
+            className={styles.conceptSectionOneTextImage}
+          />
         </div>
+
+        <img
+          src="/BB_Mobile_Concept_S1.webp"
+          alt="Building Beyond 2032 concept"
+          className={styles.conceptSectionOneMobileImage}
+        />
+      </section>
+
+      {/* SECTION 1.5 */}
+      <section className={styles.conceptSectionOneFive}>
+        <div className={styles.conceptSectionOneFiveContent}>
+          <img
+            src="/BB_Web_Concept_S1.5_Overlay.webp"
+            alt="Building Beyond 2032"
+            className={styles.conceptSectionOneFiveTextImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Mobile_Concept_S1.5.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionOneFiveMobileImage}
+        />
+      </section>
+
+      {/* SECTION 2 */}
+      <section className={styles.conceptSectionTwo}>
+        <div className={styles.conceptSectionTwoContent}>
+          <img
+            src="/BB_Web_Concept_S2_Overlay.webp"
+            alt="Building Beyond 2032"
+            className={styles.conceptSectionTwoTextImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Mobile_Concept_S2.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionTwoMobileImage}
+        />
+      </section>
+
+      {/* SECTION 2.5 */}
+      <section className={styles.conceptSectionTwoFive}>
+        <div className={styles.conceptSectionTwoFiveContent}>
+          <img
+            src="/BB_Web_Contact_Banner_Overlay.webp"
+            alt="Building Beyond 2032"
+            className={styles.conceptSectionTwoFiveTextImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Web_Contact_Banner_Overlay.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionTwoFiveMobileImage}
+        />
+      </section>
+
+      {/* SECTION 3 */}
+      <section className={styles.conceptSectionThree}>
+        <div className={styles.conceptSectionThreeContent}>
+          <img
+            src="/BB_Web_Concept_S3_Overlay.webp"
+            alt="Building Beyond 2032"
+            className={styles.conceptSectionThreeOverlayImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Mobile_Concept_S3.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionThreeMobileImage}
+        />
+      </section>
+
+      {/* SECTION 4 */}
+      <section className={styles.conceptSectionFour}>
+        <div className={styles.conceptSectionFourContent}>
+          <img
+            src="/BB_Web_Concept_S4_Overlay.webp"
+            alt="Building Beyond 2032 circular flow chart"
+            className={styles.conceptSectionFourOverlayImage}
+          />
+        </div>
+
+        <img
+          src="/BB_Mobile_Concept_S4.webp"
+          alt="Building Beyond 2032 circular flow chart"
+          className={styles.conceptSectionFourMobileImage}
+        />
+      </section>
+
+      {/* SECTION 5 */}
+      <section className={styles.conceptSectionFive}>
+        <img
+          src="/BB_Web_Concept_S5_Overlay.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionFiveDesktopImage}
+        />
+
+        <img
+          src="/BB_Mobile_Concept_S5.webp"
+          alt="Building Beyond 2032"
+          className={styles.conceptSectionFiveMobileImage}
+        />
       </section>
     </>
   );
