@@ -65,14 +65,6 @@ export default function FindWorkPage() {
           className={styles.findWorkLargeOverlayMobileImage}
         />
       </section>
-
-      <section className={styles.findWorkFullImageSection}>
-        <img
-          src="/BB_FindWork_Section2.webp"
-          alt="Building Beyond 2032 construction opportunities"
-          className={styles.findWorkFullImage}
-        />
-      </section>
     </>
   );
 }
